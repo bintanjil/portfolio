@@ -2,11 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { contactFormSchema } from "@/lib/validations";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: NextRequest) {
   try {
     console.log("Contact form submission received");
+    
+    // Initialize Resend only when the route is called
+    const resend = new Resend(process.env.RESEND_API_KEY);
     
     const formData = await request.formData();
     

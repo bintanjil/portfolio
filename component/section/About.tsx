@@ -25,11 +25,11 @@ export default function About() {
   return (
     <section id="about" className="section-padding bg-slate-950 relative overflow-hidden">
       {/* Simple elegant background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" suppressHydrationWarning>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,_rgba(99,102,241,0.12),transparent_40%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,_rgba(139,92,246,0.12),transparent_40%)]" />
       </div>
-      <div className="section-container relative z-10">
+      <div className="section-container relative z-10" suppressHydrationWarning>
         <SectionTitle
           title="About Me"
           subtitle="Learn more about my background and what I do"
