@@ -5,6 +5,17 @@ Your portfolio now includes an AI-powered chatbot that answers questions about y
 
 **Important: The chatbot uses your static portfolio data, not real-time information. All your details (skills, projects, contact info) are hardcoded in the knowledge base.**
 
+## Vercel Deployment Setup
+
+When deploying to Vercel, you MUST add the `HUGGINGFACE_API_KEY` environment variable:
+
+1. Go to Vercel Dashboard → Your Project → Settings → Environment Variables
+2. Add: `HUGGINGFACE_API_KEY` with your token value
+3. Apply to: Production, Preview, Development
+4. Redeploy your application
+
+The chatbot has a smart fallback system, so even if the Hugging Face API fails, it will still work using keyword-based responses!
+
 ## Features
 - 🤖 Free AI chatbot powered by Mistral-7B-Instruct
 - 💬 Floating chat button in bottom-right corner
