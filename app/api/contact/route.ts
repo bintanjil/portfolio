@@ -16,8 +16,6 @@ export async function POST(request: NextRequest) {
     }
 
     const resend = new Resend(process.env.RESEND_API_KEY);
-
-    const resend = new Resend(process.env.RESEND_API_KEY);
     
     const formData = await request.formData();
     
