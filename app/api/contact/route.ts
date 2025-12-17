@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
     console.log("Sending email via Resend");
 
     // Send email using Resend
-    const data = await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: 'Portfolio Contact <onboarding@resend.dev>',
       to: process.env.GMAIL_USER || 'tanjilm445@gmail.com',
       replyTo: validatedData.email as string,
@@ -89,10 +89,18 @@ export async function POST(request: NextRequest) {
       attachments: attachments.length > 0 ? attachments : undefined,
     });
 
-    console.log("Email sent successfully:", data.id);
+    if (error) {
+      console.error("Resend error:", error);
+      return NextResponse.json(
+        { error: "Failed to send email. Please try again." },
+        { status: 500 }
+      );
+    }
+
+    console.log("Email sent successfully:", data?.id);
 
     return NextResponse.json(
-      { message: "Email sent successfully", messageId: data.id },
+      { message: "Email sent successfully", messageId: data?.id },
       { status: 200 }
     );
   } catch (error: any) {
