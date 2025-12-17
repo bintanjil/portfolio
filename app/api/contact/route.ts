@@ -1,19 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
 import { contactFormSchema } from "@/lib/validations";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
 export async function POST(request: NextRequest) {
   try {
     console.log("Contact form submission received");
     
-    // Check if environment variables are set
-    if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
-      console.error("Gmail credentials not configured");
+    // Check if Resend API key is configured
+    if (!process.env.RESEND_API_KEY) {
+      console.error("Resend API key not configured");
       return NextResponse.json(
         { error: "Email service not configured. Please contact the administrator." },
         { status: 500 }
       );
     }
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
     
     const formData = await request.formData();
     
@@ -37,15 +41,6 @@ export async function POST(request: NextRequest) {
 
     console.log("Validation passed");
 
-    // Create transporter using Gmail
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.GMAIL_USER, // Your Gmail address
-        pass: process.env.GMAIL_APP_PASSWORD, // Gmail App Password
-      },
-    });
-
     // Prepare email attachments
     let attachments = [];
     if (file && file instanceof File) {
@@ -59,12 +54,12 @@ export async function POST(request: NextRequest) {
       console.log("Attachment prepared:", file.name);
     }
 
-    console.log("Sending email to:", process.env.GMAIL_USER);
+    console.log("Sending email via Resend");
 
-    // Send email
-    const info = await transporter.sendMail({
-      from: `"Portfolio Contact Form" <${process.env.GMAIL_USER}>`,
-      to: process.env.GMAIL_USER, // Your email
+    // Send email using Resend
+    const data = await resend.emails.send({
+      from: 'Portfolio Contact <onboarding@resend.dev>',
+      to: process.env.GMAIL_USER || 'tanjilm445@gmail.com',
       replyTo: validatedData.email as string,
       subject: `Portfolio Contact: ${validatedData.subject}`,
       html: `
@@ -96,10 +91,10 @@ export async function POST(request: NextRequest) {
       attachments: attachments.length > 0 ? attachments : undefined,
     });
 
-    console.log("Email sent successfully:", info.messageId);
+    console.log("Email sent successfully:", data.id);
 
     return NextResponse.json(
-      { message: "Email sent successfully", messageId: info.messageId },
+      { message: "Email sent successfully", messageId: data.id },
       { status: 200 }
     );
   } catch (error: any) {
