@@ -6,6 +6,15 @@ export async function POST(request: NextRequest) {
   try {
     console.log("Contact form submission received");
     
+    // Check if environment variables are set
+    if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+      console.error("Gmail credentials not configured");
+      return NextResponse.json(
+        { error: "Email service not configured. Please contact the administrator." },
+        { status: 500 }
+      );
+    }
+    
     const formData = await request.formData();
     
     // Extract form fields
