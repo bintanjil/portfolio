@@ -1,7 +1,12 @@
+"use client";
+
+import { motion } from "framer-motion";
 import SectionTitle from "@/component/ui/SectionTitle";
+import FloatingElements from "@/component/common/FloatingElements";
 import { personalInfo } from "@/data/personal";
 import { Card, CardContent } from "@/component/ui/card";
 import { Code2, Database, Layout } from "lucide-react";
+import { ScrollReveal, SVGPathAnimation } from "@/component/animations";
 
 export default function About() {
   const highlights = [
@@ -23,33 +28,61 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="section-padding bg-slate-950 relative overflow-hidden">
+    <section id="about" className="section-padding bg-black relative overflow-hidden">
+
       {/* Simple elegant background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" suppressHydrationWarning>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,_rgba(99,102,241,0.12),transparent_40%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,_rgba(139,92,246,0.12),transparent_40%)]" />
       </div>
       <div className="section-container relative z-10" suppressHydrationWarning>
-        <SectionTitle
-          title="About Me"
-          subtitle="Learn more about my background and what I do"
-        />
+        <ScrollReveal direction="up">
+          <SectionTitle
+            title="About Me"
+            subtitle="Learn more about my background and what I do"
+          />
+        </ScrollReveal>
         
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           {highlights.map((item, index) => (
-            <Card key={index} className="text-center group hover:shadow-2xl hover:shadow-indigo-500/40 transition-all duration-500 border-slate-800 bg-slate-900/50 backdrop-blur-sm animate-slideUp hover:scale-105 hover:border-indigo-500/50 hover:-translate-y-2 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-indigo-500/10 before:to-violet-500/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500" style={{ animationDelay: `${index * 150}ms` }}>
+            <ScrollReveal key={index} direction="up" delay={index * 0.1}>
+              <motion.div
+                whileHover={{ 
+                  scale: 1.08, 
+                  y: -12,
+                  rotateY: 5,
+                  transition: { type: "spring", stiffness: 300, damping: 20 }
+                }}
+                style={{ perspective: 1000 }}
+              >
+              <Card className="text-center group hover:shadow-[0_25px_60px_rgba(99,102,241,0.6)] transition-all duration-500 border-slate-800 bg-slate-900/50 backdrop-blur-sm animate-slideUp hover:border-indigo-500/80 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-indigo-500/20 before:to-violet-500/20 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500" style={{ animationDelay: `${index * 150}ms` }}>
               <CardContent className="pt-6 relative z-10">
                 <div className="flex justify-center mb-4 transform group-hover:scale-125 group-hover:rotate-12 transition-transform duration-500 animate-bounceIn" style={{ animationDelay: `${index * 150 + 200}ms` }}>{item.icon}</div>
                 <h3 className="font-semibold mb-2 text-slate-100">{item.title}</h3>
                 <p className="text-sm text-slate-400">{item.description}</p>
               </CardContent>
             </Card>
+            </motion.div>
+            </ScrollReveal>
           ))}
         </div>
 
-        <div className="max-w-3xl mx-auto space-y-8">
-          {/* Education Section */}
-          <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-xl p-6">
+        <ScrollReveal direction="up" delay={0.3}>
+          <div className="max-w-3xl mx-auto space-y-8">
+            {/* Decorative SVG Line */}
+            <div className="relative h-24 mb-8">
+              <SVGPathAnimation
+                path="M 0 50 Q 100 0, 200 50 T 400 50"
+                viewBox="0 0 400 100"
+                strokeColor="#8b5cf6"
+                strokeWidth={3}
+                duration={2.5}
+                className="absolute inset-0 w-full h-full opacity-30"
+              />
+            </div>
+
+            {/* Education Section */}
+            <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-xl p-6">
             <h3 className="text-2xl font-bold text-slate-100 mb-4 flex items-center gap-2">
               <span className="w-1 h-8 bg-gradient-to-b from-indigo-500 to-violet-500 rounded-full"></span>
               Education
@@ -95,6 +128,7 @@ export default function About() {
             my problem-solving skills.
           </p>
         </div>
+        </ScrollReveal>
       </div>
     </section>
   );

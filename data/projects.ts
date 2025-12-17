@@ -28,7 +28,7 @@ export const projects: Project[] = [
       "Medical staff management system",
       "Concurrent database operations support"
     ],
-    github: "https://github.com/bintanjil/healthcare-api",
+    github: "https://github.com/bintanjil/Health-Care-Management-Api-Advanced-.Net",
     category: "Enterprise Application"
   },
   {
@@ -50,8 +50,8 @@ export const projects: Project[] = [
       "Automated email notifications via Mailer",
       "API communication with Axios"
     ],
-    github: "https://github.com/bintanjil/gadgeto-backend",
-    demo: "https://github.com/bintanjil/gadgeto-frontend",
+    github: "https://github.com/bintanjil/the-gadgeto-backend",
+    demo: "https://github.com/bintanjil/The-Gadgeto-an-Ecommerce-Platform",
     category: "Full-Stack Development"
   }
 ];

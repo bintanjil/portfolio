@@ -7,6 +7,8 @@ import { contactFormSchema, type ContactFormData } from "@/lib/validations";
 import { Card, CardContent } from "@/component/ui/card";
 import Button from "@/component/ui/button";
 import { Mail, Upload, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
+import { toast } from "sonner";
+import { playSound } from "@/lib/sounds";
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -58,6 +60,13 @@ export default function ContactForm() {
         throw new Error(result.error || "Failed to send message");
       }
 
+      // Success notification
+      playSound('success');
+      toast.success("Message sent successfully!", {
+        description: "Thanks for reaching out! I'll get back to you soon.",
+        duration: 5000,
+      });
+
       setSubmitStatus({
         type: "success",
         message: "Message sent successfully! I'll get back to you soon.",
@@ -66,6 +75,14 @@ export default function ContactForm() {
       setFileName(null);
     } catch (error: any) {
       console.error("Form submission error:", error);
+      
+      // Error notification
+      playSound('error');
+      toast.error("Failed to send message", {
+        description: error.message || "Please try again later.",
+        duration: 5000,
+      });
+
       setSubmitStatus({
         type: "error",
         message: error.message || "Failed to send message. Please try again.",

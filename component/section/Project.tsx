@@ -3,7 +3,9 @@
 import { motion } from "framer-motion";
 import SectionTitle from "@/component/ui/SectionTitle";
 import ProjectCard from "@/component/common/ProjectCard";
+import FloatingElements from "@/component/common/FloatingElements";
 import { projects } from "@/data/projects";
+import { ScrollReveal } from "@/component/animations";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -29,24 +31,19 @@ const itemVariants = {
 
 export default function Projects() {
   return (
-    <section id="projects" className="section-padding bg-slate-900 relative overflow-hidden">
+    <section id="projects" className="section-padding bg-black relative overflow-hidden">
       {/* Simple elegant background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,_rgba(99,102,241,0.12),transparent_40%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,_rgba(139,92,246,0.12),transparent_40%)]" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" suppressHydrationWarning>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,_rgba(99,102,241,0.12),transparent_40%)]" suppressHydrationWarning />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,_rgba(139,92,246,0.12),transparent_40%)]" suppressHydrationWarning />
       </div>
-      <div className="section-container relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
+      <div className="section-container relative z-10" suppressHydrationWarning>
+        <ScrollReveal direction="up">
           <SectionTitle
             title="Projects"
             subtitle="A selection of my recent work and personal projects"
           />
-        </motion.div>
+        </ScrollReveal>
 
         <motion.div
           variants={containerVariants}

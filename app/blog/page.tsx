@@ -13,7 +13,7 @@ export default function BlogPage() {
   const categories = getBlogCategories();
 
   return (
-    <div className="min-h-screen pt-20 bg-slate-950">
+    <div className="min-h-screen pt-20 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       <BlogSection posts={posts} categories={categories} />
     </div>
   );

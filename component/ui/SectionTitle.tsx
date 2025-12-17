@@ -15,6 +15,7 @@ export default function SectionTitle({
 }: SectionTitleProps) {
   return (
     <div
+      suppressHydrationWarning
       className={cn(
         "mb-12",
         centered && "text-center mx-auto",

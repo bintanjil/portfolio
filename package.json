@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
+    "@huggingface/inference": "^4.13.5",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.4.2",
     "clsx": "^2.1.1",
@@ -16,6 +17,7 @@
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.555.0",
     "next": "16.0.6",
+    "nodemailer": "^7.0.11",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-hook-form": "^7.67.0",
@@ -31,6 +33,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/nodemailer": "^7.0.4",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "tailwindcss": "^4",

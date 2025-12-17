@@ -131,11 +131,12 @@ export default function ActivityCharts() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
+        whileHover={{ y: -8 }}
       >
-        <Card className="border-slate-800 bg-slate-900/50 backdrop-blur-sm">
+        <Card className="border-slate-700/50 bg-slate-900/80 backdrop-blur-sm hover:bg-slate-800/90 hover:border-indigo-500/50 hover:shadow-[0_0_30px_rgba(99,102,241,0.3)] transition-all duration-300 group">
           <CardHeader>
-            <CardTitle className="text-slate-100">Monthly Activity Across Platforms</CardTitle>
-            <p className="text-sm text-slate-400">Problems solved per month on each platform</p>
+            <CardTitle className="text-slate-100 group-hover:text-indigo-300 transition-colors">Monthly Activity Across Platforms</CardTitle>
+            <p className="text-sm text-slate-400 group-hover:text-slate-300 transition-colors">Problems solved per month on each platform</p>
           </CardHeader>
           <CardContent>
             {monthlyActivity.length === 0 ? (
@@ -195,11 +196,12 @@ export default function ActivityCharts() {
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
+          whileHover={{ x: -8, scale: 1.02 }}
         >
-          <Card className="border-slate-800 bg-slate-900/50 backdrop-blur-sm">
+          <Card className="border-slate-700/50 bg-slate-900/80 backdrop-blur-sm hover:bg-slate-800/90 hover:border-indigo-500/50 hover:shadow-[0_0_30px_rgba(99,102,241,0.3)] transition-all duration-300 group">
             <CardHeader>
-              <CardTitle className="text-slate-100">Problem Difficulty Distribution</CardTitle>
-              <p className="text-sm text-slate-400">LeetCode problems solved by difficulty</p>
+              <CardTitle className="text-slate-100 group-hover:text-indigo-300 transition-colors">Problem Difficulty Distribution</CardTitle>
+              <p className="text-sm text-slate-400 group-hover:text-slate-300 transition-colors">LeetCode problems solved by difficulty</p>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={300}>

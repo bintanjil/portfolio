@@ -48,66 +48,49 @@ export const monthlyActivity = [
 // Coding journey timeline
 export const journeyTimeline = [
   {
-    year: "2020",
+    year: "2022",
     title: "Started Coding Journey",
-    description: "Began learning programming with C++ and Python",
-    achievements: ["First 'Hello World'", "Completed 50+ basic problems"],
+    description: "Began learning programming fundamentals and computer science basics",
+    achievements: [
+      "First 'Hello World' program",
+      "Learned C++ programming basics",
+      "Completed foundational algorithms"
+    ],
     icon: "🎯",
   },
   {
-    year: "2021",
+    year: "2023",
     title: "Competitive Programming",
-    description: "Joined Codeforces and LeetCode, started competitive programming",
+    description: "Entered the world of competitive programming and algorithmic problem solving",
     achievements: [
-      "Solved 200+ LeetCode problems",
-      "Reached Pupil on Codeforces",
-      "Participated in 15 contests",
+      "Started solving problems on Codeforces",
+      "Participated in coding contests",
+      "Built problem-solving foundation"
     ],
     icon: "🏆",
   },
   {
-    year: "2022",
-    title: "Full-Stack Development",
-    description: "Expanded into web development with React and Node.js",
-    achievements: [
-      "Built 5 major projects",
-      "Learned MERN stack",
-      "100+ GitHub contributions",
-    ],
-    icon: "💻",
-  },
-  {
-    year: "2023",
-    title: "Professional Growth",
-    description: "Advanced skills in ASP.NET, NestJS, and cloud technologies",
-    achievements: [
-      "Mastered TypeScript",
-      "Deployed on Azure & AWS",
-      "350+ problems solved",
-    ],
-    icon: "🚀",
-  },
-  {
     year: "2024",
-    title: "Expertise & Innovation",
-    description: "Specializing in scalable architectures and modern frameworks",
+    title: "Reached Pupil Rank",
+    description: "Achieved Pupil rank on Codeforces and expanded coding skills",
     achievements: [
-      "Next.js expert",
-      "500+ GitHub contributions",
-      "Specialist rank on CF",
+      "Reached Pupil on Codeforces",
+      "Solved 200+ competitive programming problems",
+      "Started learning web development"
     ],
     icon: "⭐",
   },
   {
     year: "2025",
-    title: "Current Focus",
-    description: "Building production-ready applications and continuous learning",
+    title: "Full-Stack Development Focus",
+    description: "Currently focusing on problem solving and modern web development",
     achievements: [
-      "Advanced full-stack projects",
-      "Active competitive programmer",
-      "Open to opportunities",
+      "Active on LeetCode for problem solving",
+      "Learning NestJS for backend development",
+      "Learning React for frontend development",
+      "Building real-world projects"
     ],
-    icon: "🎓",
+    icon: "🚀",
   },
 ];
 

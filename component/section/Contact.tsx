@@ -1,6 +1,8 @@
 "use client";
 
+import { motion } from "framer-motion";
 import SectionTitle from "@/component/ui/SectionTitle";
+import FloatingElements from "@/component/common/FloatingElements";
 import { Card, CardContent } from "@/component/ui/card";
 import { personalInfo } from "@/data/personal";
 import { Mail, Github, Linkedin, Phone, MapPin } from "lucide-react";
@@ -31,11 +33,11 @@ export default function Contact() {
   return (
     <section id="contact" className="section-padding bg-slate-950 relative overflow-hidden">
       {/* Simple elegant background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_40%,_rgba(99,102,241,0.12),transparent_40%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_60%,_rgba(139,92,246,0.12),transparent_40%)]" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" suppressHydrationWarning>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_40%,_rgba(99,102,241,0.12),transparent_40%)]" suppressHydrationWarning />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_60%,_rgba(139,92,246,0.12),transparent_40%)]" suppressHydrationWarning />
       </div>
-      <div className="section-container relative z-10">
+      <div className="section-container relative z-10" suppressHydrationWarning>
         <SectionTitle
           title="Get In Touch"
           subtitle="Feel free to reach out for opportunities, collaborations, or just to say hi!"
@@ -47,9 +49,18 @@ export default function Contact() {
             {/* Contact Information */}
             <div className="space-y-6">
               <div className="grid gap-6">
-                <Card className="group relative hover:shadow-2xl hover:shadow-indigo-500/50 transition-all duration-500 border-slate-800 bg-slate-900/50 backdrop-blur-sm hover:-translate-y-2 hover:scale-105 hover:border-indigo-500/50 animate-slideUp overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-indigo-500/10 before:to-violet-500/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500 cursor-pointer" style={{ animationDelay: '0ms' }} onClick={handleCopyEmail}>
+                <motion.div
+                  whileHover={{ 
+                    scale: 1.08, 
+                    y: -12,
+                    rotateY: 5,
+                    transition: { type: "spring", stiffness: 300, damping: 20 }
+                  }}
+                  style={{ perspective: 1000 }}
+                >
+                <Card className="group relative hover:shadow-[0_30px_60px_rgba(99,102,241,0.7)] transition-all duration-500 border-slate-800 bg-slate-900/50 backdrop-blur-sm hover:border-indigo-500/80 animate-slideUp overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-indigo-500/20 before:to-violet-500/20 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500 cursor-pointer" style={{ animationDelay: '0ms' }} onClick={handleCopyEmail}>
                   <CardContent className="pt-6 text-center relative z-10">
-                    <div className="mx-auto w-16 h-16 bg-gradient-to-br from-indigo-500 to-violet-500 rounded-full flex items-center justify-center mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg shadow-indigo-500/50 animate-bounceIn">
+                    <div suppressHydrationWarning className="mx-auto w-16 h-16 bg-gradient-to-br from-indigo-500 to-violet-500 rounded-full flex items-center justify-center mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg shadow-indigo-500/50 animate-bounceIn">
                       <Mail className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="font-semibold mb-2 text-slate-100">Email</h3>
@@ -61,10 +72,20 @@ export default function Contact() {
                     </button>
                   </CardContent>
                 </Card>
+                </motion.div>
 
-                <Card className="group relative hover:shadow-2xl hover:shadow-indigo-500/50 transition-all duration-500 border-slate-800 bg-slate-900/50 backdrop-blur-sm hover:-translate-y-2 hover:scale-105 hover:border-indigo-500/50 animate-slideUp overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-indigo-500/10 before:to-violet-500/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500 cursor-pointer" style={{ animationDelay: '150ms' }} onClick={handleCopyPhone}>
+                <motion.div
+                  whileHover={{ 
+                    scale: 1.08, 
+                    y: -12,
+                    rotateY: 5,
+                    transition: { type: "spring", stiffness: 300, damping: 20 }
+                  }}
+                  style={{ perspective: 1000 }}
+                >
+                <Card className="group relative hover:shadow-[0_30px_60px_rgba(99,102,241,0.7)] transition-all duration-500 border-slate-800 bg-slate-900/50 backdrop-blur-sm hover:border-indigo-500/80 animate-slideUp overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-indigo-500/20 before:to-violet-500/20 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500 cursor-pointer" style={{ animationDelay: '150ms' }} onClick={handleCopyPhone}>
                   <CardContent className="pt-6 text-center relative z-10">
-                    <div className="mx-auto w-16 h-16 bg-gradient-to-br from-indigo-500 to-violet-500 rounded-full flex items-center justify-center mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg shadow-indigo-500/50 animate-bounceIn" style={{ animationDelay: '150ms' }}>
+                    <div suppressHydrationWarning className="mx-auto w-16 h-16 bg-gradient-to-br from-indigo-500 to-violet-500 rounded-full flex items-center justify-center mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg shadow-indigo-500/50 animate-bounceIn" style={{ animationDelay: '150ms' }}>
                       <Phone className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="font-semibold mb-2 text-slate-100">Phone</h3>
@@ -76,10 +97,20 @@ export default function Contact() {
                     </button>
                   </CardContent>
                 </Card>
+                </motion.div>
 
-                <Card className="group relative hover:shadow-2xl hover:shadow-indigo-500/50 transition-all duration-500 border-slate-800 bg-slate-900/50 backdrop-blur-sm hover:-translate-y-2 hover:scale-105 hover:border-indigo-500/50 animate-slideUp overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-indigo-500/10 before:to-violet-500/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500" style={{ animationDelay: '300ms' }}>
+                <motion.div
+                  whileHover={{ 
+                    scale: 1.08, 
+                    y: -12,
+                    rotateY: 5,
+                    transition: { type: "spring", stiffness: 300, damping: 20 }
+                  }}
+                  style={{ perspective: 1000 }}
+                >
+                <Card className="group relative hover:shadow-[0_30px_60px_rgba(99,102,241,0.7)] transition-all duration-500 border-slate-800 bg-slate-900/50 backdrop-blur-sm hover:border-indigo-500/80 animate-slideUp overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-indigo-500/20 before:to-violet-500/20 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500" style={{ animationDelay: '300ms' }}>
                   <CardContent className="pt-6 text-center relative z-10">
-                    <div className="mx-auto w-16 h-16 bg-gradient-to-br from-indigo-500 to-violet-500 rounded-full flex items-center justify-center mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg shadow-indigo-500/50 animate-bounceIn" style={{ animationDelay: '300ms' }}>
+                    <div suppressHydrationWarning className="mx-auto w-16 h-16 bg-gradient-to-br from-indigo-500 to-violet-500 rounded-full flex items-center justify-center mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg shadow-indigo-500/50 animate-bounceIn" style={{ animationDelay: '300ms' }}>
                       <MapPin className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="font-semibold mb-2 text-slate-100">Location</h3>
@@ -88,6 +119,7 @@ export default function Contact() {
                     </p>
                   </CardContent>
                 </Card>
+                </motion.div>
               </div>
 
               <div className="text-center">

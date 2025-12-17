@@ -27,9 +27,18 @@ export default function BlogCard({ post, index }: BlogCardProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
+      whileHover={{ 
+        scale: 1.05,
+        y: -15,
+        rotateZ: 2,
+        transition: { 
+          type: "spring", 
+          stiffness: 300
+        }
+      }}
     >
       <Link href={`/blog/${post.slug}`}>
-        <Card className="group hover:shadow-2xl hover:shadow-indigo-500/20 transition-all duration-300 border-slate-800 bg-slate-900/50 backdrop-blur-sm hover:-translate-y-1 hover:border-indigo-500/50 cursor-pointer h-full">
+        <Card className="group hover:shadow-[0_25px_50px_rgba(99,102,241,0.5)] transition-all duration-300 border-slate-800 bg-slate-900/50 backdrop-blur-sm hover:border-indigo-500/80 cursor-pointer h-full relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-indigo-500/10 before:via-purple-500/10 before:to-pink-500/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity">
           <CardHeader>
             <div className="flex items-start justify-between gap-4 mb-3">
               <Badge className={`${categoryColor} border`}>

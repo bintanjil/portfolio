@@ -16,15 +16,35 @@ export interface RoadmapProject {
 export const roadmapProjects: RoadmapProject[] = [
   // COMPLETED PROJECTS
   {
+    id: 'healthcare-management-api',
+    title: 'Healthcare Management API',
+    description: 'Enterprise-grade 3-tier healthcare management system with RESTful API',
+    status: 'completed',
+    category: 'Backend Development',
+    technologies: ['ASP.NET Core', 'C#', 'Entity Framework', 'SQL Server', 'RESTful API'],
+    startDate: 'March 2024',
+    completionDate: 'August 2024',
+    highlights: [
+      '3-tier architecture with BLL, DAL, and Application layers',
+      'SOLID principles implementation for maintainability',
+      'Code First approach with Entity Framework',
+      'RESTful API endpoints for CRUD operations',
+      'Patient records and appointment management',
+      'Medical staff management system',
+      'Concurrent database operations support'
+    ]
+  },
+
+  // IN-PROGRESS PROJECTS
+  {
     id: 'portfolio-website',
     title: 'Personal Portfolio Website',
     description: 'A modern, interactive portfolio showcasing my skills, projects, and professional journey with real-time activity tracking and 3D graphics.',
-    status: 'completed',
+    status: 'in-progress',
     category: 'Web Development',
     technologies: ['Next.js', 'TypeScript', 'Three.js', 'Tailwind CSS', 'Framer Motion'],
     startDate: 'October 2024',
-    completionDate: 'December 2024',
-    link: 'https://yourportfolio.com',
+    progress: 85,
     github: 'https://github.com/bintanjil/portfolio',
     highlights: [
       'Real-time LeetCode, GitHub, and Codeforces activity tracking',
@@ -33,87 +53,22 @@ export const roadmapProjects: RoadmapProject[] = [
       'Responsive design with dark theme'
     ]
   },
-  {
-    id: 'task-management-app',
-    title: 'Task Management Application',
-    description: 'A full-stack task management app with team collaboration features, real-time updates, and project analytics.',
-    status: 'completed',
-    category: 'Full-Stack Development',
-    technologies: ['React', 'Node.js', 'MongoDB', 'Socket.io', 'Redux'],
-    startDate: 'June 2024',
-    completionDate: 'September 2024',
-    highlights: [
-      'Real-time collaboration with WebSocket',
-      'Advanced filtering and search',
-      'Role-based access control',
-      'Email notifications'
-    ]
-  },
-
-  // IN-PROGRESS PROJECTS
-  {
-    id: 'ai-code-assistant',
-    title: 'AI-Powered Code Assistant',
-    description: 'An intelligent VS Code extension that provides context-aware code suggestions, refactoring recommendations, and documentation generation.',
-    status: 'in-progress',
-    category: 'AI/ML & Developer Tools',
-    technologies: ['TypeScript', 'OpenAI API', 'VS Code API', 'Python', 'TensorFlow'],
-    startDate: 'November 2024',
-    progress: 65,
-    github: 'https://github.com/bintanjil/ai-code-assistant',
-    highlights: [
-      'Natural language to code conversion',
-      'Smart refactoring suggestions',
-      'Auto-generated documentation',
-      'Code quality analysis'
-    ]
-  },
-  {
-    id: 'realtime-analytics-dashboard',
-    title: 'Real-time Analytics Dashboard',
-    description: 'A comprehensive dashboard for tracking application metrics, user behavior, and system performance in real-time.',
-    status: 'in-progress',
-    category: 'Data Visualization',
-    technologies: ['Next.js', 'D3.js', 'WebSocket', 'PostgreSQL', 'Redis'],
-    startDate: 'December 2024',
-    progress: 40,
-    highlights: [
-      'Live data streaming',
-      'Custom chart components',
-      'Alert system for anomalies',
-      'Export and reporting features'
-    ]
-  },
 
   // PLANNED PROJECTS
   {
-    id: 'blockchain-voting-system',
-    title: 'Blockchain-Based Voting System',
-    description: 'A secure, transparent, and tamper-proof voting platform leveraging blockchain technology for elections and polls.',
+    id: 'campfood',
+    title: 'CampFood - Campus Food Cost Tracker',
+    description: 'A web platform where students share and track prices, daily menus, and reviews of food options around their campus and university canteen, helping students budget better and find affordable meals.',
     status: 'planned',
-    category: 'Blockchain & Security',
-    technologies: ['Solidity', 'Ethereum', 'Web3.js', 'React', 'IPFS'],
+    category: 'Web Development & Community',
+    technologies: ['NestJS', 'Next.js', 'PostgreSQL', 'TypeScript', 'Tailwind CSS'],
     startDate: 'Q1 2025',
     highlights: [
-      'Immutable vote records',
-      'Anonymous voting mechanism',
-      'Smart contract-based verification',
-      'Decentralized identity management'
-    ]
-  },
-  {
-    id: 'ai-health-tracker',
-    title: 'AI Health & Fitness Tracker',
-    description: 'A mobile app that uses AI to provide personalized health recommendations, workout plans, and nutrition guidance.',
-    status: 'planned',
-    category: 'Mobile Development & AI',
-    technologies: ['React Native', 'TensorFlow Lite', 'Firebase', 'HealthKit', 'Python'],
-    startDate: 'Q2 2025',
-    highlights: [
-      'Computer vision for exercise form correction',
-      'Personalized meal planning',
-      'Integration with wearable devices',
-      'Progress tracking with AI insights'
+      'Price comparison across campus food options',
+      'Daily menu tracking and notifications',
+      'Student reviews and ratings',
+      'Budget planning tools',
+      'Location-based food discovery'
     ]
   },
   {
@@ -122,43 +77,13 @@ export const roadmapProjects: RoadmapProject[] = [
     description: 'A comprehensive toolkit for automating CI/CD pipelines, infrastructure provisioning, and deployment workflows.',
     status: 'planned',
     category: 'DevOps & Infrastructure',
-    technologies: ['Docker', 'Kubernetes', 'Terraform', 'Jenkins', 'AWS', 'Go'],
-    startDate: 'Q2 2025',
+    technologies: ['Docker', 'Kubernetes', 'Go', 'Terraform', 'Jenkins', 'AWS'],
+    startDate: 'Q3 2025',
     highlights: [
       'One-click deployment pipelines',
       'Auto-scaling infrastructure',
       'Multi-cloud support',
       'Monitoring and logging integration'
-    ]
-  },
-  {
-    id: 'social-learning-platform',
-    title: 'Social Learning Platform',
-    description: 'An interactive platform where developers can learn together through code challenges, peer reviews, and collaborative projects.',
-    status: 'planned',
-    category: 'EdTech & Community',
-    technologies: ['Next.js', 'GraphQL', 'PostgreSQL', 'Redis', 'Socket.io', 'Monaco Editor'],
-    startDate: 'Q3 2025',
-    highlights: [
-      'Live code collaboration',
-      'Peer-to-peer learning rooms',
-      'Gamified learning paths',
-      'Built-in code execution environment'
-    ]
-  },
-  {
-    id: 'microservices-ecommerce',
-    title: 'Microservices E-commerce Platform',
-    description: 'A scalable e-commerce platform built with microservices architecture, featuring advanced inventory management and payment processing.',
-    status: 'planned',
-    category: 'Microservices & Cloud',
-    technologies: ['NestJS', 'Docker', 'Kubernetes', 'RabbitMQ', 'PostgreSQL', 'Redis'],
-    startDate: 'Q4 2025',
-    highlights: [
-      'Service mesh architecture',
-      'Event-driven communication',
-      'Distributed caching',
-      'API gateway with rate limiting'
     ]
   }
 ];

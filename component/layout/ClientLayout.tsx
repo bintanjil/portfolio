@@ -7,11 +7,18 @@ import { ViewTransitions } from "@/component/common/ViewTransitions";
 import PageWrapper from "@/component/layout/PageWrapper";
 import { ReactNode } from "react";
 import { Toaster } from "sonner";
+import { MagneticCursor, BlobCursor, PageTransitionWrapper } from "@/component/animations";
+import { ASCIIArtHeader, MatrixRain, WeatherWidget } from "@/component/effects";
 
 export function ClientLayout({ children }: { children: ReactNode }) {
   return (
     <>
+      <ASCIIArtHeader />
+      <MatrixRain />
       <ViewTransitions />
+      <MagneticCursor />
+      <BlobCursor />
+      <WeatherWidget />
       <Toaster
         position="bottom-right"
         toastOptions={{
@@ -28,7 +35,9 @@ export function ClientLayout({ children }: { children: ReactNode }) {
       <Header />
       <Breadcrumb />
       <main className="min-h-screen">
-        <PageWrapper>{children}</PageWrapper>
+        <PageTransitionWrapper>
+          <PageWrapper>{children}</PageWrapper>
+        </PageTransitionWrapper>
       </main>
       <Footer />
     </>

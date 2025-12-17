@@ -11,8 +11,8 @@ export default function Roadmap() {
   const planned = roadmapProjects.filter(p => p.status === 'planned');
 
   return (
-    <section className="py-20 px-4 md:px-8">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-20 px-4 md:px-8 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto relative z-10">
         <SectionTitle
           title="Project Roadmap"
           subtitle="My journey from completed milestones to future innovations"
@@ -134,8 +134,18 @@ function ProjectCard({
       {/* Content */}
       <div className={`flex-1 ml-20 md:ml-0 ${align === 'left' ? 'md:pr-12' : 'md:pl-12'}`}>
         <motion.div
-          whileHover={{ scale: 1.02 }}
-          className={`p-6 rounded-2xl border-2 backdrop-blur-sm ${statusColors[project.status]}`}
+          whileHover={{ 
+            scale: 1.06, 
+            y: -12,
+            rotateZ: 2,
+            boxShadow: "0 30px 60px rgba(99,102,241,0.7)"
+          }}
+          transition={{ 
+            type: "spring", 
+            stiffness: 300,
+            damping: 15
+          }}
+          className={`p-6 rounded-2xl border-2 backdrop-blur-sm hover:shadow-[0_30px_60px_rgba(99,102,241,0.7)] transition-all duration-300 cursor-pointer relative overflow-hidden ${statusColors[project.status]}`}
         >
           {/* Header */}
           <div className="flex items-start justify-between gap-4 mb-4">

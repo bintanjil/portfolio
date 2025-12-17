@@ -1,13 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
 import { contactFormSchema } from "@/lib/validations";
+import nodemailer from "nodemailer";
 
 export async function POST(request: NextRequest) {
   try {
     console.log("Contact form submission received");
-    
-    // Initialize Resend only when the route is called
-    const resend = new Resend(process.env.RESEND_API_KEY);
     
     const formData = await request.formData();
     
@@ -31,6 +28,15 @@ export async function POST(request: NextRequest) {
 
     console.log("Validation passed");
 
+    // Create transporter using Gmail
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.GMAIL_USER, // Your Gmail address
+        pass: process.env.GMAIL_APP_PASSWORD, // Gmail App Password
+      },
+    });
+
     // Prepare email attachments
     let attachments = [];
     if (file && file instanceof File) {
@@ -44,31 +50,47 @@ export async function POST(request: NextRequest) {
       console.log("Attachment prepared:", file.name);
     }
 
-    console.log("Sending email to:", process.env.CONTACT_EMAIL);
-    console.log("Using API key:", process.env.RESEND_API_KEY?.substring(0, 10) + "...");
+    console.log("Sending email to:", process.env.GMAIL_USER);
 
-    // Send email using Resend
-    const emailData = await resend.emails.send({
-      from: "Portfolio Contact <onboarding@resend.dev>",
-      to: "tanjilm445@gmail.com", // Resend test mode: can only send to registered email
+    // Send email
+    const info = await transporter.sendMail({
+      from: `"Portfolio Contact Form" <${process.env.GMAIL_USER}>`,
+      to: process.env.GMAIL_USER, // Your email
       replyTo: validatedData.email as string,
       subject: `Portfolio Contact: ${validatedData.subject}`,
       html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${validatedData.name}</p>
-        <p><strong>Email:</strong> ${validatedData.email}</p>
-        <p><strong>Subject:</strong> ${validatedData.subject}</p>
-        <hr />
-        <p><strong>Message:</strong></p>
-        <p>${(validatedData.message as string).replace(/\n/g, "<br />")}</p>
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #6366f1; border-bottom: 2px solid #6366f1; padding-bottom: 10px;">
+            New Contact Form Submission
+          </h2>
+          
+          <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <p style="margin: 10px 0;"><strong>Name:</strong> ${validatedData.name}</p>
+            <p style="margin: 10px 0;"><strong>Email:</strong> 
+              <a href="mailto:${validatedData.email}" style="color: #6366f1;">${validatedData.email}</a>
+            </p>
+            <p style="margin: 10px 0;"><strong>Subject:</strong> ${validatedData.subject}</p>
+          </div>
+          
+          <div style="margin: 20px 0;">
+            <h3 style="color: #334155;">Message:</h3>
+            <p style="line-height: 1.6; color: #475569;">${(validatedData.message as string).replace(/\n/g, "<br />")}</p>
+          </div>
+          
+          <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 30px 0;" />
+          
+          <p style="color: #94a3b8; font-size: 12px; text-align: center;">
+            Sent from your Portfolio Contact Form at ${new Date().toLocaleString()}
+          </p>
+        </div>
       `,
       attachments: attachments.length > 0 ? attachments : undefined,
     });
 
-    console.log("Email sent successfully:", emailData);
+    console.log("Email sent successfully:", info.messageId);
 
     return NextResponse.json(
-      { message: "Email sent successfully", data: emailData },
+      { message: "Email sent successfully", messageId: info.messageId },
       { status: 200 }
     );
   } catch (error: any) {

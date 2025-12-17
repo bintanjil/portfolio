@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --color-background: 240 15% 10%;
+  --color-background: 240 20% 4%;
   --color-foreground: 240 10% 95%;
-  --color-card: 240 12% 12%;
+  --color-card: 240 15% 8%;
   --color-card-foreground: 240 10% 95%;
   --color-popover: 240 12% 12%;
   --color-popover-foreground: 240 10% 95%;
@@ -30,6 +30,30 @@
 body {
   background-color: hsl(var(--color-background));
   color: hsl(var(--color-foreground));
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Eye-catching typography enhancements */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+h1 {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
 }
 
 /* Smooth page transitions */
@@ -303,6 +327,26 @@ html {
   }
 }
 
+@keyframes borderGlow {
+  0%, 100% {
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
+  }
+  50% {
+    border-color: rgba(139, 92, 246, 0.6);
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.02);
+  }
+}
+
 .animate-blob {
   animation: blob 7s infinite;
 }
@@ -379,6 +423,28 @@ html {
   animation: sparkle 2s ease-in-out infinite;
 }
 
+.animate-borderGlow {
+  animation: borderGlow 3s ease-in-out infinite;
+}
+
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+}
+
+.hover-glow {
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.5), 0 0 60px rgba(99, 102, 241, 0.3);
+  border-color: rgba(139, 92, 246, 0.6);
+}
+
 .animation-delay-400 {
   animation-delay: 400ms;
 }
@@ -430,4 +496,60 @@ html {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* ASCII Art Header Animation */
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.animate-fadeOut {
+  animation: fadeOut 3s ease-in-out forwards;
+}
+
+/* Music Player Progress Bar */
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.animate-progress {
+  animation: progress 180s linear infinite;
+}
+
+/* Glitch Effect Utilities */
+.glitch-effect {
+  position: relative;
+  animation: glitch-skew 1s infinite;
+}
+
+@keyframes glitch-skew {
+  0% {
+    transform: skew(0deg);
+  }
+  10% {
+    transform: skew(-2deg);
+  }
+  20% {
+    transform: skew(2deg);
+  }
+  30% {
+    transform: skew(0deg);
+  }
+  100% {
+    transform: skew(0deg);
+  }
 }

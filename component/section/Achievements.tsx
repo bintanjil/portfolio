@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import SectionTitle from "@/component/ui/SectionTitle";
+import FloatingElements from "@/component/common/FloatingElements";
 import { Card, CardContent, CardHeader, CardTitle } from "@/component/ui/card";
 import { competitiveProgramming, leadership } from "@/data/achievements";
 import { Trophy, Users, ExternalLink } from "lucide-react";
@@ -20,6 +21,7 @@ const cardVariants = {
 export default function Achievements() {
   return (
     <section id="achievements" className="section-padding bg-slate-950 relative overflow-hidden">
+
       {/* Simple elegant background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_30%,_rgba(99,102,241,0.12),transparent_40%)]" />
@@ -45,8 +47,15 @@ export default function Achievements() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
+            whileHover={{ 
+              scale: 1.05,
+              y: -15,
+              rotateY: 3,
+              transition: { type: "spring", stiffness: 300, damping: 20 }
+            }}
+            style={{ perspective: 1000 }}
           >
-            <Card className="group hover:shadow-2xl hover:shadow-indigo-500/40 transition-all duration-500 border-slate-800 bg-slate-900/50 backdrop-blur-sm hover:-translate-y-2 hover:scale-[1.02] hover:border-indigo-500/50 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-indigo-500/5 before:to-violet-500/5 before:transition-opacity before:duration-500 h-full">
+            <Card className="group hover:shadow-[0_30px_60px_rgba(99,102,241,0.6)] transition-all duration-500 border-slate-800 bg-slate-900/50 backdrop-blur-sm hover:border-indigo-500/80 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-indigo-500/20 before:to-violet-500/20 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500 h-full">
             <CardHeader className="bg-gradient-to-r from-indigo-950/50 to-violet-950/50 border-b border-slate-800 relative z-10">
               <CardTitle className="flex items-center gap-2 text-slate-100">
                 <motion.div
