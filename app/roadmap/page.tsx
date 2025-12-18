@@ -9,11 +9,14 @@ import { playSound } from "@/lib/sounds";
 
 export default function RoadmapPage() {
   useEffect(() => {
-    playSound('notification');
-    toast.info("Project Roadmap", {
-      description: "View my project timeline and future plans",
-      duration: 3000,
-    });
+    const timer = setTimeout(() => {
+      playSound('notification');
+      toast.info("Project Roadmap", {
+        description: "View my project timeline and future plans",
+        duration: 2000,
+      });
+    }, 100);
+    return () => clearTimeout(timer);
   }, []);
 
   return (

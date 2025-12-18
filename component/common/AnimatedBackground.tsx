@@ -39,15 +39,16 @@ export default function AnimatedBackground({
 
   return (
     <div className={`relative min-h-screen overflow-hidden ${className}`} suppressHydrationWarning>
-      {/* Background Gradient */}
+      {/* Deep Background Gradient with enhanced darkness */}
       <div className={`absolute inset-0 bg-gradient-to-br ${bgGradient}`} suppressHydrationWarning />
+      <div className="absolute inset-0 bg-black/40" suppressHydrationWarning />
 
-      {/* Floating Gradient Blobs - Diagonal Movement */}
+      {/* Floating Gradient Blobs - Deeper and more transparent */}
       <div className="absolute inset-0 overflow-hidden" suppressHydrationWarning>
         {blobs.map((blob) => (
           <div
             key={blob.id}
-            className="absolute rounded-full mix-blend-multiply filter blur-3xl opacity-30"
+            className="absolute rounded-full mix-blend-screen filter blur-3xl opacity-20"
             style={{
               width: `${blob.size}px`,
               height: `${blob.size}px`,
@@ -62,12 +63,15 @@ export default function AnimatedBackground({
 
       {/* Noise texture overlay for depth */}
       <div 
-        className="absolute inset-0 opacity-[0.015] pointer-events-none"
+        className="absolute inset-0 opacity-[0.025] pointer-events-none"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E")`,
         }}
         suppressHydrationWarning
       />
+      
+      {/* Additional depth overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40" suppressHydrationWarning />
 
       {/* Content */}
       <div className="relative z-10" suppressHydrationWarning>

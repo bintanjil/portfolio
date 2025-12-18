@@ -25,20 +25,12 @@ export default function Hero() {
     playSound('notification');
     toast.success("CV Download Started!", {
       description: "Your download will begin shortly",
-      duration: 3000,
+      duration: 2000,
     });
   };
 
   return (
-    <AnimatedBackground
-      blobColors={["#6366f1", "#8b5cf6", "#a855f7"]}
-      blobCount={3}
-      animationSpeed="medium"
-      bgGradient="from-black via-slate-950 to-black"
-      className="min-h-screen"
-    >
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Floating tech badges */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">{/* Floating tech badges */}
         <div className="absolute top-20 left-1/4 px-3 py-1.5 rounded-full bg-slate-950/90 backdrop-blur-sm border border-indigo-500/30 text-xs text-indigo-300 font-medium animate-float shadow-lg shadow-indigo-500/20" style={{ animationDelay: '0s', animationDuration: '6s' }} suppressHydrationWarning>
           ASP.NET
         </div>
@@ -170,6 +162,5 @@ export default function Hero() {
         </div>
       </div>
     </section>
-    </AnimatedBackground>
   );
 }

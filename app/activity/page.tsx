@@ -9,27 +9,34 @@ import { useEffect } from "react";
 import { toast } from "sonner";
 import { playSound } from "@/lib/sounds";
 
-// Lazy load heavy client components with loading states
+// Lazy load heavy client components with loading states and SSR disabled
 const PlatformStats = dynamic(() => import("@/component/section/PlatformStats"), {
-  loading: () => <div className="h-64 bg-slate-800 rounded-xl animate-pulse" />
+  loading: () => <div className="h-64 bg-slate-800/50 rounded-xl" />,
+  ssr: false
 });
 const ActivityCharts = dynamic(() => import("@/component/section/ActivityCharts"), {
-  loading: () => <div className="h-96 bg-slate-800 rounded-xl animate-pulse" />
+  loading: () => <div className="h-96 bg-slate-800/50 rounded-xl" />,
+  ssr: false
 });
 const CodingJourneyTimeline = dynamic(() => import("@/component/section/CodingJourneyTimeline"), {
-  loading: () => <div className="h-96 bg-slate-800 rounded-xl animate-pulse" />
+  loading: () => <div className="h-96 bg-slate-800/50 rounded-xl" />,
+  ssr: false
 });
 const ContributionHeatmap = dynamic(() => import("@/component/section/ContributionHeatmap"), {
-  loading: () => <div className="h-64 bg-slate-800 rounded-xl animate-pulse" />
+  loading: () => <div className="h-64 bg-slate-800/50 rounded-xl" />,
+  ssr: false
 });
 
 export default function ActivityPage() {
   useEffect(() => {
-    playSound('notification');
-    toast.info("Activity Dashboard", {
-      description: "View coding statistics and contributions",
-      duration: 3000,
-    });
+    const timer = setTimeout(() => {
+      playSound('notification');
+      toast.info("Activity Dashboard", {
+        description: "View coding statistics and contributions",
+        duration: 2000,
+      });
+    }, 100);
+    return () => clearTimeout(timer);
   }, []);
 
   return (

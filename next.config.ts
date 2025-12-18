@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
   // Optimize performance
   reactStrictMode: true,
   
+  // Enable SWC minification for faster builds
+  swcMinify: true,
+  
   // Optimize images
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -15,6 +18,11 @@ const nextConfig: NextConfig = {
   
   // Enable compression
   compress: true,
+  
+  // Optimize for faster page transitions
+  experimental: {
+    optimizePackageImports: ['framer-motion', 'lucide-react', 'recharts'],
+  },
   
   // Reduce bundle size
   modularizeImports: {

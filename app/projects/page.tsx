@@ -9,11 +9,14 @@ import { playSound } from "@/lib/sounds";
 
 export default function ProjectsPage() {
   useEffect(() => {
-    playSound('notification');
-    toast.info("Projects Page", {
-      description: "Explore my latest work and projects",
-      duration: 3000,
-    });
+    const timer = setTimeout(() => {
+      playSound('notification');
+      toast.info("Projects Page", {
+        description: "Explore my latest work and projects",
+        duration: 2000,
+      });
+    }, 100);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -23,7 +26,7 @@ export default function ProjectsPage() {
       animationSpeed="medium"
       bgGradient="from-black via-slate-950 to-black"
     >
-      <div className="min-h-screen pt-20">
+      <div className="min-h-screen">
         <Projects />
       </div>
     </AnimatedBackground>

@@ -14,12 +14,12 @@ export default function PageLoader() {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
-          setTimeout(() => setIsLoading(false), 500);
+          setTimeout(() => setIsLoading(false), 200);
           return 100;
         }
-        return prev + 2;
+        return prev + 5;
       });
-    }, 40);
+    }, 20);
 
     return () => clearInterval(interval);
   }, []);
@@ -33,7 +33,7 @@ export default function PageLoader() {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.2 }}
           className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950"
         >
           {/* Animated gradient background */}

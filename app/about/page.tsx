@@ -13,11 +13,11 @@ export default function AboutPage() {
   return (
     <AnimatedBackground
       blobColors={["#6366f1", "#8b5cf6", "#a855f7"]}
-      blobCount={3}
-      animationSpeed="slow"
+      blobCount={4}
+      animationSpeed="medium"
       bgGradient="from-black via-slate-950 to-black"
     >
-      <div className="min-h-screen pt-20">
+      <div className="min-h-screen">
         <About />
         <Education />
       </div>
