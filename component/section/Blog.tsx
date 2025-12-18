@@ -23,7 +23,7 @@ export default function BlogSection({ posts, categories }: BlogSectionProps) {
       : posts.filter((post) => post.category === selectedCategory);
 
   return (
-    <section className="section-padding bg-slate-950 relative overflow-hidden">
+    <section className="section-padding pt-32 bg-slate-950 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,_rgba(99,102,241,0.12),transparent_40%)]" />

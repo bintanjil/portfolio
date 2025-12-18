@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/component/ui/card";
 
 export default function Skills() {
   return (
-    <section id="skills" className="section-padding bg-slate-900 relative overflow-hidden">
+    <section id="skills" className="section-padding pt-32 bg-slate-900 relative overflow-hidden">
       {/* Simple elegant background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,_rgba(99,102,241,0.12),transparent_40%)]" />

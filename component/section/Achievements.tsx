@@ -20,7 +20,7 @@ const cardVariants = {
 
 export default function Achievements() {
   return (
-    <section id="achievements" className="section-padding bg-slate-950 relative overflow-hidden">
+    <section id="achievements" className="section-padding pt-32 bg-slate-950 relative overflow-hidden">
 
       {/* Simple elegant background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

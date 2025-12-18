@@ -28,7 +28,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="section-padding bg-black relative overflow-hidden">
+    <section id="about" className="section-padding pt-32 bg-black relative overflow-hidden">
 
       {/* Simple elegant background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" suppressHydrationWarning>

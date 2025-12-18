@@ -31,7 +31,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="section-padding bg-slate-950 relative overflow-hidden">
+    <section id="contact" className="section-padding pt-32 bg-slate-950 relative overflow-hidden">
       {/* Simple elegant background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" suppressHydrationWarning>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_40%,_rgba(99,102,241,0.12),transparent_40%)]" suppressHydrationWarning />
