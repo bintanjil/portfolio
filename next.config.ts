@@ -6,9 +6,6 @@ const nextConfig: NextConfig = {
   // Optimize performance
   reactStrictMode: true,
   
-  // Enable SWC minification for faster builds
-  swcMinify: true,
-  
   // Optimize images
   images: {
     formats: ['image/avif', 'image/webp'],
