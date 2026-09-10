@@ -1,25 +1,40 @@
 import Hero from "@/component/section/Hero";
-import QuickStats from "@/component/section/QuickStats";
-import PageLoader from "@/component/ui/PageLoader";
-import AnimatedBackground from "@/component/common/AnimatedBackground";
+import About from "@/component/section/About";
+import Experience from "@/component/section/Experience";
+import Projects from "@/component/section/Project";
+import Skills from "@/component/section/Skills";
+import Education from "@/component/section/Education";
+import Research from "@/component/section/Research";
+import Achievements from "@/component/section/Achievements";
+import Cta from "@/component/section/Cta";
+import Contact from "@/component/section/Contact";
+import TechMarquee from "@/component/common/TechMarquee";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tanjil Bin Mohiuddin | Software Engineer",
-  description: "Portfolio of Tanjil Bin Mohiuddin - Software Engineer and Full-Stack Developer specializing in ASP.NET, NestJS, and Next.js",
+  title: "Tanjil Bin Mohiuddin | Associate Backend Developer",
+  description:
+    "Portfolio of Tanjil Bin Mohiuddin - Associate Backend Developer at Akij iBOS Limited, building enterprise ERP systems with ASP.NET Core and NestJS. Seeking research and PhD opportunities.",
 };
 
 export default function Home() {
   return (
-    <AnimatedBackground
-      blobColors={["#6366f1", "#8b5cf6", "#a855f7"]}
-      blobCount={4}
-      animationSpeed="medium"
-      bgGradient="from-black via-slate-950 to-black"
-    >
-      <PageLoader />
+    <>
       <Hero />
-      <QuickStats />
-    </AnimatedBackground>
+      <div className="border-b border-stone-200 bg-white py-6">
+        <div className="section-container">
+          <TechMarquee />
+        </div>
+      </div>
+      <About />
+      <Experience />
+      <Projects />
+      <Skills />
+      <Education />
+      <Research />
+      <Achievements />
+      <Cta />
+      <Contact />
+    </>
   );
 }

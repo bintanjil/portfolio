@@ -1,134 +1,133 @@
-"use client";
-
-import { motion } from "framer-motion";
 import SectionTitle from "@/component/ui/SectionTitle";
-import FloatingElements from "@/component/common/FloatingElements";
+import Reveal from "@/component/common/Reveal";
+import { Card, CardContent, CardHeader, CardTitle } from "@/component/ui/card";
 import { personalInfo } from "@/data/personal";
-import { Card, CardContent } from "@/component/ui/card";
-import { Code2, Database, Layout } from "lucide-react";
-import { ScrollReveal, SVGPathAnimation } from "@/component/animations";
+import {
+  Briefcase,
+  Code2,
+  Database,
+  FlaskConical,
+  GraduationCap,
+  Layers,
+  MapPin,
+  Target,
+} from "lucide-react";
+
+const highlights = [
+  {
+    icon: Database,
+    title: "Backend Engineering",
+    description:
+      "Designing and optimizing enterprise ERP systems and RESTful APIs with clean, maintainable architecture.",
+  },
+  {
+    icon: Layers,
+    title: "Full-Stack Development",
+    description:
+      "Building end-to-end web applications with ASP.NET Core, NestJS, Next.js, and PostgreSQL.",
+  },
+  {
+    icon: Code2,
+    title: "Problem Solving",
+    description:
+      "Active competitive programmer with strong algorithmic thinking and optimization skills.",
+  },
+];
+
+const facts = [
+  { icon: Briefcase, label: "Current Role", value: "Associate Backend Developer" },
+  { icon: GraduationCap, label: "Education", value: "B.Sc. CSE, AIUB" },
+  { icon: MapPin, label: "Location", value: personalInfo.location },
+  { icon: Target, label: "Focus", value: "ERP · Backend · Data Systems" },
+];
 
 export default function About() {
-  const highlights = [
-    {
-      icon: <Code2 className="w-8 h-8 text-primary" />,
-      title: "Full-Stack Development",
-      description: "Experienced in building scalable web applications using modern frameworks and technologies.",
-    },
-    {
-      icon: <Database className="w-8 h-8 text-primary" />,
-      title: "Backend Architecture",
-      description: "Proficient in designing robust APIs and implementing enterprise-level solutions.",
-    },
-    {
-      icon: <Layout className="w-8 h-8 text-primary" />,
-      title: "Problem Solving",
-      description: "Active competitive programmer with strong algorithmic thinking and optimization skills.",
-    },
-  ];
-
   return (
-    <section id="about" className="section-padding pt-32 bg-black relative overflow-hidden">
+    <section id="about" className="section-padding">
+      <div className="section-container">
+        <SectionTitle
+          eyebrow="About"
+          title="About Me"
+          subtitle="A backend developer focused on building reliable, scalable enterprise software."
+        />
 
-      {/* Simple elegant background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none" suppressHydrationWarning>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,_rgba(99,102,241,0.12),transparent_40%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,_rgba(139,92,246,0.12),transparent_40%)]" />
-      </div>
-      <div className="section-container relative z-10" suppressHydrationWarning>
-        <ScrollReveal direction="up">
-          <SectionTitle
-            title="About Me"
-            subtitle="Learn more about my background and what I do"
-          />
-        </ScrollReveal>
-        
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
-          {highlights.map((item, index) => (
-            <ScrollReveal key={index} direction="up" delay={index * 0.1}>
-              <motion.div
-                whileHover={{ 
-                  scale: 1.08, 
-                  y: -12,
-                  rotateY: 5,
-                  transition: { type: "spring", stiffness: 300, damping: 20 }
-                }}
-                style={{ perspective: 1000 }}
-              >
-              <Card className="text-center group hover:shadow-[0_25px_60px_rgba(99,102,241,0.6)] transition-all duration-500 border-slate-800 bg-slate-900/50 backdrop-blur-sm animate-slideUp hover:border-indigo-500/80 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-indigo-500/20 before:to-violet-500/20 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500" style={{ animationDelay: `${index * 150}ms` }}>
-              <CardContent className="pt-6 relative z-10">
-                <div className="flex justify-center mb-4 transform group-hover:scale-125 group-hover:rotate-12 transition-transform duration-500 animate-bounceIn" style={{ animationDelay: `${index * 150 + 200}ms` }}>{item.icon}</div>
-                <h3 className="font-semibold mb-2 text-slate-100">{item.title}</h3>
-                <p className="text-sm text-slate-400">{item.description}</p>
+        <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
+          <Reveal>
+            <div className="space-y-4 leading-relaxed text-stone-600">
+              <p>
+                I&apos;m {personalInfo.name}, an Associate Backend Developer at
+                Akij iBOS Limited, where I work on enterprise ERP systems for
+                organizations such as Bangladesh Military Academy, Paragon
+                Group, and Prince Bazaar. I hold a B.Sc. in Computer Science and
+                Engineering from AIUB with a CGPA of 3.77/4.00.
+              </p>
+              <p>
+                My work spans inventory management, financial tracking, and
+                workflow automation, with a strong emphasis on database
+                optimization and system reliability. Outside of work, I&apos;m
+                an active competitive programmer who enjoys solving algorithmic
+                challenges.
+              </p>
+
+              <div className="flex gap-3 rounded-xl border border-indigo-100 bg-indigo-50 p-4">
+                <FlaskConical className="h-5 w-5 flex-shrink-0 text-indigo-600" />
+                <div>
+                  <p className="text-sm font-semibold text-indigo-900">
+                    {personalInfo.seeking}
+                  </p>
+                  <p className="mt-1 text-sm leading-relaxed text-indigo-800/80">
+                    {personalInfo.research}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle>Quick Facts</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-4">
+                  {facts.map(({ icon: Icon, label, value }) => (
+                    <li key={label} className="flex items-start gap-3">
+                      <span className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-stone-100 text-stone-700">
+                        <Icon className="h-4 w-4" />
+                      </span>
+                      <div>
+                        <p className="text-xs uppercase tracking-wider text-stone-400">
+                          {label}
+                        </p>
+                        <p className="text-sm font-semibold text-stone-900">
+                          {value}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
               </CardContent>
             </Card>
-            </motion.div>
-            </ScrollReveal>
+          </Reveal>
+        </div>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {highlights.map(({ icon: Icon, title, description }, index) => (
+            <Reveal key={title} delay={index * 80}>
+              <Card className="group h-full border-t-4 border-t-indigo-600 transition-all duration-300 hover:-transtone-y-1 hover:shadow-lg">
+                <CardContent className="pt-6">
+                  <div className="mb-4 inline-flex rounded-lg bg-indigo-50 p-3 text-indigo-600">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mb-2 font-display font-bold text-stone-900">
+                    {title}
+                  </h3>
+                  <p className="text-sm text-stone-600">{description}</p>
+                </CardContent>
+              </Card>
+            </Reveal>
           ))}
         </div>
-
-        <ScrollReveal direction="up" delay={0.3}>
-          <div className="max-w-3xl mx-auto space-y-8">
-            {/* Decorative SVG Line */}
-            <div className="relative h-24 mb-8">
-              <SVGPathAnimation
-                path="M 0 50 Q 100 0, 200 50 T 400 50"
-                viewBox="0 0 400 100"
-                strokeColor="#8b5cf6"
-                strokeWidth={3}
-                duration={2.5}
-                className="absolute inset-0 w-full h-full opacity-30"
-              />
-            </div>
-
-            {/* Education Section */}
-            <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-xl p-6">
-            <h3 className="text-2xl font-bold text-slate-100 mb-4 flex items-center gap-2">
-              <span className="w-1 h-8 bg-gradient-to-b from-indigo-500 to-violet-500 rounded-full"></span>
-              Education
-            </h3>
-            <div className="space-y-3">
-              <div className="flex items-start justify-between flex-wrap gap-2">
-                <div>
-                  <h4 className="text-xl font-semibold text-indigo-400">American International University-Bangladesh (AIUB)</h4>
-                  <p className="text-slate-300">B.Sc. in Computer Science and Engineering</p>
-                  <p className="text-slate-400 text-sm">Dhaka, Bangladesh</p>
-                </div>
-                <span className="text-slate-400">Jan 2022 – Jan 2026</span>
-              </div>
-              
-              <div className="grid md:grid-cols-2 gap-4 mt-4">
-                <div className="bg-slate-800/30 border border-slate-700/50 rounded-lg p-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-2xl">🏆</span>
-                    <h5 className="font-semibold text-slate-100">Dean's Award</h5>
-                  </div>
-                  <p className="text-sm text-slate-400">Top 5% student in CSE department</p>
-                  <p className="text-xs text-slate-500 mt-1">Fall 2022 – Fall 2024</p>
-                </div>
-                
-                <div className="bg-slate-800/30 border border-slate-700/50 rounded-lg p-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-2xl">🎓</span>
-                    <h5 className="font-semibold text-slate-100">Academic Scholarship</h5>
-                  </div>
-                  <p className="text-sm text-slate-400">Consistent academic excellence</p>
-                  <p className="text-xs text-slate-500 mt-1">Fall 2023 – Spring 2024</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <p className="text-lg text-slate-300 leading-relaxed">
-            I'm a passionate Computer Science student at AIUB, recognized in the top 5% of my department. 
-            My journey combines academic excellence with practical experience in full-stack development and 
-            competitive programming. I've built enterprise-grade applications using ASP.NET and NestJS, 
-            competed in ICPC preliminaries, and actively solve algorithmic challenges on platforms like 
-            LeetCode and Codeforces. I'm dedicated to creating scalable solutions and continuously improving 
-            my problem-solving skills.
-          </p>
-        </div>
-        </ScrollReveal>
       </div>
     </section>
   );

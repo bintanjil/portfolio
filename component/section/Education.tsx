@@ -1,67 +1,77 @@
 import SectionTitle from "@/component/ui/SectionTitle";
+import Reveal from "@/component/common/Reveal";
 import { education } from "@/data/education";
 import { Card, CardContent, CardHeader, CardTitle } from "@/component/ui/card";
-import { GraduationCap, Award } from "lucide-react";
+import Badge from "@/component/ui/badge";
+import { Award, GraduationCap } from "lucide-react";
 
 export default function Education() {
   return (
-    <section id="education" className="section-padding pt-32 bg-slate-900 relative overflow-hidden">
-      {/* Simple elegant background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none" suppressHydrationWarning>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,_rgba(99,102,241,0.12),transparent_40%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_75%,_rgba(139,92,246,0.12),transparent_40%)]" />
-      </div>
-      <div className="section-container relative z-10" suppressHydrationWarning>
+    <section id="education" className="section-padding">
+      <div className="section-container">
         <SectionTitle
+          eyebrow="Academics"
           title="Education"
-          subtitle="My academic background and achievements"
+          subtitle="My academic background and honors."
         />
 
-        <Card className="group max-w-3xl mx-auto shadow-2xl hover:shadow-2xl hover:shadow-indigo-500/40 transition-all duration-500 border-slate-800 bg-slate-900/50 backdrop-blur-sm animate-fadeIn hover:-translate-y-2 hover:scale-[1.02] hover:border-indigo-500/50 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-indigo-500/5 before:to-violet-500/5">
-          <CardHeader className="bg-gradient-to-r from-indigo-950/50 to-violet-950/50 border-b border-slate-800 relative z-10">
-              <div className="flex items-start justify-between">
-              <div className="flex gap-4">
-                <div className="p-3 bg-gradient-to-br from-indigo-500 to-violet-500 rounded-xl shadow-lg shadow-indigo-500/50 animate-bounceIn group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
-                  <GraduationCap className="w-8 h-8 text-white" />
+        <Reveal>
+          <Card className="mx-auto max-w-3xl">
+            <CardHeader>
+              <div className="flex flex-wrap items-start justify-between gap-4">
+                <div className="flex gap-4">
+                  <div className="inline-flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
+                    <GraduationCap className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <CardTitle>{education.institution}</CardTitle>
+                    <p className="mt-1 text-sm text-stone-600">
+                      {education.degree}
+                    </p>
+                    <p className="mt-1 text-sm text-stone-600">
+                      {education.duration}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <CardTitle className="mb-2 text-slate-100">{education.institution}</CardTitle>
-                  <p className="text-slate-400">
-                    {education.degree} in {education.description}
-                  </p>
-                  <p className="text-sm text-slate-500 mt-1">
-                    {education.duration}
-                  </p>
+                <div className="flex flex-col items-end gap-2">
+                  <Badge className="bg-green-600">{education.status}</Badge>
+                  <div className="rounded-lg border border-stone-200 px-4 py-2 text-center">
+                    <p className="text-xs text-stone-600">CGPA</p>
+                    <p className="text-lg font-bold text-stone-900">
+                      {education.gpa}
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div className="text-right">
-                <div className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-lg shadow-lg shadow-indigo-500/50 hover:scale-110 transition-transform duration-300">
-                  <p className="text-xs font-medium">CGPA</p>
-                  <p className="font-bold text-xl">{education.gpa}</p>
-                </div>
+            </CardHeader>
+            <CardContent>
+              <h4 className="mb-3 flex items-center gap-2 font-semibold text-stone-900">
+                <Award className="h-5 w-5 text-indigo-600" />
+                Honors &amp; Awards
+              </h4>
+              <div className="space-y-3">
+                {education.awards.map((award) => (
+                  <div
+                    key={award.title}
+                    className="border-l-2 border-indigo-600 pl-4"
+                  >
+                    <div className="flex flex-wrap items-center justify-between gap-1">
+                      <h5 className="font-medium text-stone-900">
+                        {award.title}
+                      </h5>
+                      <span className="text-xs text-stone-600">
+                        {award.period}
+                      </span>
+                    </div>
+                    <p className="mt-0.5 text-sm text-stone-600">
+                      {award.description}
+                    </p>
+                  </div>
+                ))}
               </div>
-            </div>
-          </CardHeader>
-          <CardContent className="pt-6">
-            <h4 className="font-semibold mb-4 flex items-center gap-2 text-slate-100">
-              <Award className="w-5 h-5 text-indigo-600" />
-              Honors & Awards
-            </h4>
-            <div className="space-y-4">
-              {education.awards.map((award, index) => (
-                <div key={index} className="border-l-2 border-indigo-600 pl-4 py-2 hover:bg-slate-900/30 rounded-r transition-colors duration-200">
-                  <h5 className="font-semibold text-slate-100">{typeof award === 'string' ? award : (award as any).title}</h5>
-                  {typeof award !== 'string' && award && (
-                    <>
-                      <p className="text-sm text-slate-400">{(award as any).description}</p>
-                      <p className="text-xs text-slate-500 mt-1">{(award as any).period}</p>
-                    </>
-                  )}
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </Reveal>
       </div>
     </section>
   );

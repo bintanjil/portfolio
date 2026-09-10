@@ -1,12 +1,19 @@
 export const education = {
   institution: "American International University-Bangladesh (AIUB)",
-  degree: "Bachelor of Science in Computer Science",
-  duration: "202s - 2026",
-  gpa: "3.75/4.0",
-  description: "Focused on software engineering, algorithms, and data structures.",
+  degree: "B.Sc. in Computer Science and Engineering",
+  duration: "Jan 2022 – Jan 2026",
+  gpa: "3.77 / 4.00",
+  status: "Graduated",
   awards: [
-    "Dean's List Honor for 4 Semesters",
-    "Academic Scholarship Recipient",
-    
-  ]
+    {
+      title: "Dean's Award",
+      period: "Fall 2022 – Fall 2024",
+      description: "Recognized as a top 5% student in the CSE department.",
+    },
+    {
+      title: "Academic Scholarship",
+      period: "Fall 2023 – Spring 2024",
+      description: "Awarded for consistent academic excellence.",
+    },
+  ],
 };

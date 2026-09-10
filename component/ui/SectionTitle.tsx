@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 interface SectionTitleProps {
   title: string;
   subtitle?: string;
+  eyebrow?: string;
   centered?: boolean;
   className?: string;
 }
@@ -10,25 +11,33 @@ interface SectionTitleProps {
 export default function SectionTitle({
   title,
   subtitle,
+  eyebrow,
   centered = false,
   className,
 }: SectionTitleProps) {
   return (
-    <div
-      suppressHydrationWarning
-      className={cn(
-        "mb-12",
-        centered && "text-center mx-auto",
-        className
+    <div className={cn("mb-12", centered && "mx-auto text-center", className)}>
+      {eyebrow && (
+        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-indigo-600">
+          {eyebrow}
+        </p>
       )}
-    >
-      <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 text-slate-100">
-        <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-purple-400 bg-clip-text text-transparent">
-          {title}
-        </span>
+      <h2 className="font-display text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl">
+        {title}
       </h2>
+      <div
+        className={cn(
+          "mt-5 h-1 w-14 rounded-full bg-indigo-600",
+          centered && "mx-auto"
+        )}
+      />
       {subtitle && (
-        <p className="text-lg text-slate-400 max-w-2xl">
+        <p
+          className={cn(
+            "mt-5 text-base text-stone-500 sm:text-lg",
+            centered && "mx-auto max-w-2xl"
+          )}
+        >
           {subtitle}
         </p>
       )}

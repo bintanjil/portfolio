@@ -1,142 +1,89 @@
-"use client";
-
-import { motion } from "framer-motion";
 import SectionTitle from "@/component/ui/SectionTitle";
-import FloatingElements from "@/component/common/FloatingElements";
+import Reveal from "@/component/common/Reveal";
 import { Card, CardContent } from "@/component/ui/card";
 import { personalInfo } from "@/data/personal";
-import { Mail, Github, Linkedin, Phone, MapPin } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import SocialLinks from "@/component/common/SocialLinks";
 import ContactForm from "@/component/form/ContactForm";
-import Link from "next/link";
-import { toast } from "sonner";
+import CopyEmailButton from "@/component/common/CopyEmailButton";
+
+const details = [
+  {
+    icon: Mail,
+    label: "Email",
+    value: personalInfo.email,
+    href: `mailto:${personalInfo.email}`,
+  },
+  {
+    icon: Phone,
+    label: "Phone",
+    value: personalInfo.phone,
+    href: `tel:${personalInfo.phone}`,
+  },
+  {
+    icon: MapPin,
+    label: "Location",
+    value: personalInfo.location,
+  },
+];
 
 export default function Contact() {
-  const handleCopyEmail = (e: React.MouseEvent) => {
-    e.preventDefault();
-    navigator.clipboard.writeText(personalInfo.email);
-    toast.success("Email copied to clipboard!", {
-      description: personalInfo.email,
-      duration: 3000,
-    });
-  };
-
-  const handleCopyPhone = (e: React.MouseEvent) => {
-    e.preventDefault();
-    navigator.clipboard.writeText(personalInfo.phone);
-    toast.success("Phone number copied!", {
-      description: personalInfo.phone,
-      duration: 3000,
-    });
-  };
-
   return (
-    <section id="contact" className="section-padding pt-32 bg-slate-950 relative overflow-hidden">
-      {/* Simple elegant background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none" suppressHydrationWarning>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_40%,_rgba(99,102,241,0.12),transparent_40%)]" suppressHydrationWarning />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_60%,_rgba(139,92,246,0.12),transparent_40%)]" suppressHydrationWarning />
-      </div>
-      <div className="section-container relative z-10" suppressHydrationWarning>
+    <section id="contact" className="section-padding bg-white">
+      <div className="section-container">
         <SectionTitle
+          eyebrow="Contact"
           title="Get In Touch"
-          subtitle="Feel free to reach out for opportunities, collaborations, or just to say hi!"
+          subtitle="Feel free to reach out for opportunities, collaborations, or just to say hi."
           centered
         />
 
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8 mb-12">
-            {/* Contact Information */}
+        <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-2">
+          <Reveal>
             <div className="space-y-6">
-              <div className="grid gap-6">
-                <motion.div
-                  whileHover={{ 
-                    scale: 1.08, 
-                    y: -12,
-                    rotateY: 5,
-                    transition: { type: "spring", stiffness: 300, damping: 20 }
-                  }}
-                  style={{ perspective: 1000 }}
-                >
-                <Card className="group relative hover:shadow-[0_30px_60px_rgba(99,102,241,0.7)] transition-all duration-500 border-slate-800 bg-slate-900/50 backdrop-blur-sm hover:border-indigo-500/80 animate-slideUp overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-indigo-500/20 before:to-violet-500/20 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500 cursor-pointer" style={{ animationDelay: '0ms' }} onClick={handleCopyEmail}>
-                  <CardContent className="pt-6 text-center relative z-10">
-                    <div suppressHydrationWarning className="mx-auto w-16 h-16 bg-gradient-to-br from-indigo-500 to-violet-500 rounded-full flex items-center justify-center mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg shadow-indigo-500/50 animate-bounceIn">
-                      <Mail className="w-8 h-8 text-white" />
-                    </div>
-                    <h3 className="font-semibold mb-2 text-slate-100">Email</h3>
-                    <button
-                      onClick={handleCopyEmail}
-                      className="text-sm text-slate-400 hover:text-indigo-400 transition-colors"
-                    >
-                      {personalInfo.email}
-                    </button>
-                  </CardContent>
-                </Card>
-                </motion.div>
+              <div className="grid gap-4">
+                {details.map(({ icon: Icon, label, value, href }) => {
+                  const content = (
+                    <CardContent className="flex items-center gap-4 pt-6">
+                      <div className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-stone-900">
+                          {label}
+                        </p>
+                        <p className="text-sm text-stone-600">{value}</p>
+                      </div>
+                    </CardContent>
+                  );
 
-                <motion.div
-                  whileHover={{ 
-                    scale: 1.08, 
-                    y: -12,
-                    rotateY: 5,
-                    transition: { type: "spring", stiffness: 300, damping: 20 }
-                  }}
-                  style={{ perspective: 1000 }}
-                >
-                <Card className="group relative hover:shadow-[0_30px_60px_rgba(99,102,241,0.7)] transition-all duration-500 border-slate-800 bg-slate-900/50 backdrop-blur-sm hover:border-indigo-500/80 animate-slideUp overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-indigo-500/20 before:to-violet-500/20 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500 cursor-pointer" style={{ animationDelay: '150ms' }} onClick={handleCopyPhone}>
-                  <CardContent className="pt-6 text-center relative z-10">
-                    <div suppressHydrationWarning className="mx-auto w-16 h-16 bg-gradient-to-br from-indigo-500 to-violet-500 rounded-full flex items-center justify-center mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg shadow-indigo-500/50 animate-bounceIn" style={{ animationDelay: '150ms' }}>
-                      <Phone className="w-8 h-8 text-white" />
-                    </div>
-                    <h3 className="font-semibold mb-2 text-slate-100">Phone</h3>
-                    <button
-                      onClick={handleCopyPhone}
-                      className="text-sm text-slate-400 hover:text-indigo-400 transition-colors"
-                    >
-                      {personalInfo.phone}
-                    </button>
-                  </CardContent>
-                </Card>
-                </motion.div>
-
-                <motion.div
-                  whileHover={{ 
-                    scale: 1.08, 
-                    y: -12,
-                    rotateY: 5,
-                    transition: { type: "spring", stiffness: 300, damping: 20 }
-                  }}
-                  style={{ perspective: 1000 }}
-                >
-                <Card className="group relative hover:shadow-[0_30px_60px_rgba(99,102,241,0.7)] transition-all duration-500 border-slate-800 bg-slate-900/50 backdrop-blur-sm hover:border-indigo-500/80 animate-slideUp overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-indigo-500/20 before:to-violet-500/20 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500" style={{ animationDelay: '300ms' }}>
-                  <CardContent className="pt-6 text-center relative z-10">
-                    <div suppressHydrationWarning className="mx-auto w-16 h-16 bg-gradient-to-br from-indigo-500 to-violet-500 rounded-full flex items-center justify-center mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg shadow-indigo-500/50 animate-bounceIn" style={{ animationDelay: '300ms' }}>
-                      <MapPin className="w-8 h-8 text-white" />
-                    </div>
-                    <h3 className="font-semibold mb-2 text-slate-100">Location</h3>
-                    <p className="text-sm text-slate-400">
-                      {personalInfo.location}
-                    </p>
-                  </CardContent>
-                </Card>
-                </motion.div>
+                  return href ? (
+                    <a key={label} href={href}>
+                      <Card className="transition-shadow hover:shadow-md">
+                        {content}
+                      </Card>
+                    </a>
+                  ) : (
+                    <Card key={label}>{content}</Card>
+                  );
+                })}
               </div>
 
-              <div className="text-center">
-                <p className="text-slate-400 mb-6">
-                  Connect with me on social media
-                </p>
-                <div className="flex justify-center">
+              <div className="space-y-4">
+                <CopyEmailButton email={personalInfo.email} />
+                <div>
+                  <p className="mb-3 text-sm text-stone-600">
+                    Connect with me on social media
+                  </p>
                   <SocialLinks />
                 </div>
               </div>
             </div>
+          </Reveal>
 
-            {/* Contact Form */}
-            <div>
-              <ContactForm />
-            </div>
-          </div>
+          <Reveal delay={120}>
+            <ContactForm />
+          </Reveal>
         </div>
       </div>
     </section>

@@ -1,89 +1,57 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useMemo, useState } from "react";
 import SectionTitle from "@/component/ui/SectionTitle";
+import Reveal from "@/component/common/Reveal";
 import ProjectCard from "@/component/common/ProjectCard";
-import FloatingElements from "@/component/common/FloatingElements";
 import { projects } from "@/data/projects";
-import { ScrollReveal } from "@/component/animations";
-import { useState, useEffect } from "react";
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-    },
-  },
-};
+import { cn } from "@/lib/utils";
 
 export default function Projects() {
-  const [mounted, setMounted] = useState(false);
+  const categories = useMemo(
+    () => ["All", ...Array.from(new Set(projects.map((p) => p.category)))],
+    []
+  );
+  const [active, setActive] = useState("All");
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return (
-      <section id="projects" className="section-padding pt-32 bg-black relative overflow-hidden">
-        <div className="section-container relative z-10">
-          <SectionTitle
-            title="Projects"
-            subtitle="A selection of my recent work and personal projects"
-          />
-          <div className="grid md:grid-cols-2 gap-6">
-            {projects.map((project) => (
-              <div key={project.id}>
-                <ProjectCard project={project} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  }
+  const filtered =
+    active === "All"
+      ? projects
+      : projects.filter((project) => project.category === active);
 
   return (
-    <section id="projects" className="section-padding pt-32 bg-black relative overflow-hidden">{/* Simple elegant background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none" suppressHydrationWarning>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,_rgba(99,102,241,0.12),transparent_40%)]" suppressHydrationWarning />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,_rgba(139,92,246,0.12),transparent_40%)]" suppressHydrationWarning />
-      </div>
-      <div className="section-container relative z-10" suppressHydrationWarning>
-        <ScrollReveal direction="up">
-          <SectionTitle
-            title="Projects"
-            subtitle="A selection of my recent work and personal projects"
-          />
-        </ScrollReveal>
+    <section id="projects" className="section-padding">
+      <div className="section-container">
+        <SectionTitle
+          eyebrow="Portfolio"
+          title="Projects"
+          subtitle="A selection of enterprise and full-stack projects I've built."
+        />
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid md:grid-cols-2 gap-6"
-        >
-          {projects.map((project) => (
-            <motion.div key={project.id} variants={itemVariants}>
-              <ProjectCard project={project} />
-            </motion.div>
+        <div className="mb-8 flex flex-wrap gap-2">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setActive(category)}
+              className={cn(
+                "rounded-lg px-4 py-2 text-sm font-medium transition-colors",
+                active === category
+                  ? "bg-indigo-600 text-white"
+                  : "bg-stone-100 text-stone-600 hover:bg-stone-200"
+              )}
+            >
+              {category}
+            </button>
           ))}
-        </motion.div>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2">
+          {filtered.map((project, index) => (
+            <Reveal key={project.id} delay={index * 100}>
+              <ProjectCard project={project} />
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -6,9 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { contactFormSchema, type ContactFormData } from "@/lib/validations";
 import { Card, CardContent } from "@/component/ui/card";
 import Button from "@/component/ui/button";
-import { Mail, Upload, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
+import { AlertCircle, CheckCircle2, Loader2, Mail, Upload } from "lucide-react";
 import { toast } from "sonner";
-import { playSound } from "@/lib/sounds";
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -32,8 +31,6 @@ export default function ContactForm() {
     setSubmitStatus({ type: null, message: "" });
 
     try {
-      console.log("Submitting form data:", data);
-      
       const formData = new FormData();
       formData.append("name", data.name);
       formData.append("email", data.email);
@@ -44,49 +41,34 @@ export default function ContactForm() {
         formData.append("file", data.file[0]);
       }
 
-      console.log("Sending request to /api/contact");
-
       const response = await fetch("/api/contact", {
         method: "POST",
         body: formData,
       });
 
-      console.log("Response status:", response.status);
-
       const result = await response.json();
-      console.log("Response data:", result);
 
       if (!response.ok) {
         throw new Error(result.error || "Failed to send message");
       }
 
-      // Success notification
-      playSound('success');
       toast.success("Message sent successfully!", {
         description: "Thanks for reaching out! I'll get back to you soon.",
-        duration: 5000,
       });
-
       setSubmitStatus({
         type: "success",
         message: "Message sent successfully! I'll get back to you soon.",
       });
       reset();
       setFileName(null);
-    } catch (error: any) {
-      console.error("Form submission error:", error);
-      
-      // Error notification
-      playSound('error');
-      toast.error("Failed to send message", {
-        description: error.message || "Please try again later.",
-        duration: 5000,
-      });
+    } catch (error) {
+      const message =
+        error instanceof Error
+          ? error.message
+          : "Failed to send message. Please try again.";
 
-      setSubmitStatus({
-        type: "error",
-        message: error.message || "Failed to send message. Please try again.",
-      });
+      toast.error("Failed to send message", { description: message });
+      setSubmitStatus({ type: "error", message });
     } finally {
       setIsSubmitting(false);
     }
@@ -94,143 +76,160 @@ export default function ContactForm() {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
-      setFileName(file.name);
-    }
+    if (file) setFileName(file.name);
   };
 
+  const inputClass =
+    "w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 placeholder-stone-500 transition-colors focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100";
+
   return (
-    <Card className="border-slate-800 bg-slate-900/50 backdrop-blur-sm">
-      <CardContent className="p-8">
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-          {/* Name Input */}
+    <Card>
+      <CardContent className="p-6 sm:p-8">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">
-              Name <span className="text-red-400">*</span>
+            <label
+              htmlFor="name"
+              className="mb-2 block text-sm font-medium text-stone-700"
+            >
+              Name <span className="text-red-500">*</span>
             </label>
             <input
               id="name"
               type="text"
               {...register("name")}
-              className="w-full px-4 py-3 bg-slate-950/50 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+              className={inputClass}
               placeholder="Your name"
             />
             {errors.name && (
-              <p className="mt-1 text-sm text-red-400">{errors.name.message}</p>
+              <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>
             )}
           </div>
 
-          {/* Email Input */}
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
-              Email <span className="text-red-400">*</span>
+            <label
+              htmlFor="email"
+              className="mb-2 block text-sm font-medium text-stone-700"
+            >
+              Email <span className="text-red-500">*</span>
             </label>
             <input
               id="email"
               type="email"
               {...register("email")}
-              className="w-full px-4 py-3 bg-slate-950/50 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+              className={inputClass}
               placeholder="your.email@example.com"
             />
             {errors.email && (
-              <p className="mt-1 text-sm text-red-400">{errors.email.message}</p>
+              <p className="mt-1 text-sm text-red-500">
+                {errors.email.message}
+              </p>
             )}
           </div>
 
-          {/* Subject Input */}
           <div>
-            <label htmlFor="subject" className="block text-sm font-medium text-slate-300 mb-2">
-              Subject <span className="text-red-400">*</span>
+            <label
+              htmlFor="subject"
+              className="mb-2 block text-sm font-medium text-stone-700"
+            >
+              Subject <span className="text-red-500">*</span>
             </label>
             <input
               id="subject"
               type="text"
               {...register("subject")}
-              className="w-full px-4 py-3 bg-slate-950/50 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+              className={inputClass}
               placeholder="What's this about?"
             />
             {errors.subject && (
-              <p className="mt-1 text-sm text-red-400">{errors.subject.message}</p>
+              <p className="mt-1 text-sm text-red-500">
+                {errors.subject.message}
+              </p>
             )}
           </div>
 
-          {/* Message Textarea */}
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-2">
-              Message <span className="text-red-400">*</span>
+            <label
+              htmlFor="message"
+              className="mb-2 block text-sm font-medium text-stone-700"
+            >
+              Message <span className="text-red-500">*</span>
             </label>
             <textarea
               id="message"
               rows={6}
               {...register("message")}
-              className="w-full px-4 py-3 bg-slate-950/50 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all resize-none"
+              className={`${inputClass} resize-none`}
               placeholder="Your message..."
             />
             {errors.message && (
-              <p className="mt-1 text-sm text-red-400">{errors.message.message}</p>
+              <p className="mt-1 text-sm text-red-500">
+                {errors.message.message}
+              </p>
             )}
           </div>
 
-          {/* File Upload */}
           <div>
-            <label htmlFor="file" className="block text-sm font-medium text-slate-300 mb-2">
+            <label
+              htmlFor="file"
+              className="mb-2 block text-sm font-medium text-stone-700"
+            >
               Attachment (Optional)
-              <span className="text-slate-500 text-xs ml-2">PDF, PNG, JPEG - Max 5MB</span>
+              <span className="ml-2 text-xs text-stone-500">
+                PDF, PNG, JPEG - Max 5MB
+              </span>
             </label>
-            <div className="relative">
-              <input
-                id="file"
-                type="file"
-                accept=".pdf,.png,.jpg,.jpeg"
-                {...register("file")}
-                onChange={handleFileChange}
-                className="hidden"
-              />
-              <label
-                htmlFor="file"
-                className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-slate-950/50 border border-slate-700 border-dashed rounded-lg text-slate-400 cursor-pointer hover:border-indigo-500 hover:text-indigo-400 transition-all"
-              >
-                <Upload className="w-5 h-5" />
-                <span>{fileName || "Click to upload file"}</span>
-              </label>
-            </div>
+            <input
+              id="file"
+              type="file"
+              accept=".pdf,.png,.jpg,.jpeg"
+              {...register("file")}
+              onChange={handleFileChange}
+              className="hidden"
+            />
+            <label
+              htmlFor="file"
+              className="flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-dashed border-stone-300 px-4 py-3 text-sm text-stone-600 transition-colors hover:border-indigo-500 hover:text-indigo-600"
+            >
+              <Upload className="h-5 w-5" />
+              <span>{fileName || "Click to upload file"}</span>
+            </label>
             {errors.file && (
-              <p className="mt-1 text-sm text-red-400">{errors.file.message as string}</p>
+              <p className="mt-1 text-sm text-red-500">
+                {errors.file.message as string}
+              </p>
             )}
           </div>
 
-          {/* Status Message */}
           {submitStatus.type && (
             <div
-              className={`flex items-center gap-2 p-4 rounded-lg ${
+              className={`flex items-center gap-2 rounded-lg p-4 text-sm ${
                 submitStatus.type === "success"
-                  ? "bg-green-500/10 border border-green-500/20 text-green-400"
-                  : "bg-red-500/10 border border-red-500/20 text-red-400"
+                  ? "bg-green-50 text-green-700"
+                  : "bg-red-50 text-red-700"
               }`}
             >
               {submitStatus.type === "success" ? (
-                <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
+                <CheckCircle2 className="h-5 w-5 flex-shrink-0" />
               ) : (
-                <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                <AlertCircle className="h-5 w-5 flex-shrink-0" />
               )}
-              <p className="text-sm">{submitStatus.message}</p>
+              <p>{submitStatus.message}</p>
             </div>
           )}
 
-          {/* Submit Button */}
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 hover:from-indigo-600 hover:via-violet-600 hover:to-purple-600 text-white font-medium py-3 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="flex w-full items-center justify-center gap-2 py-3"
           >
             {isSubmitting ? (
               <>
-                <Loader2 className="w-5 h-5 animate-spin" />
+                <Loader2 className="h-5 w-5 animate-spin" />
                 <span>Sending...</span>
               </>
             ) : (
               <>
-                <Mail className="w-5 h-5" />
+                <Mail className="h-5 w-5" />
                 <span>Send Message</span>
               </>
             )}

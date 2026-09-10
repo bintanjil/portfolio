@@ -1,72 +1,55 @@
 "use client";
 
-import { Github, Linkedin, Mail, Code2, Trophy } from "lucide-react";
+import { Code2, Github, Linkedin, Mail, Trophy } from "lucide-react";
 import Link from "next/link";
 import { personalInfo } from "@/data/personal";
-import { toast } from "sonner";
+import { cn } from "@/lib/utils";
 
-export default function SocialLinks() {
-  const handleCopyEmail = (e: React.MouseEvent) => {
-    e.preventDefault();
-    navigator.clipboard.writeText(personalInfo.email);
-    toast.success("Email copied to clipboard!", {
-      description: personalInfo.email,
-      duration: 3000,
-    });
-  };
+const links = [
+  { href: personalInfo.github, label: "GitHub", Icon: Github },
+  { href: personalInfo.linkedin, label: "LinkedIn", Icon: Linkedin },
+  { href: personalInfo.codeforces, label: "Codeforces", Icon: Trophy },
+  { href: personalInfo.leetcode, label: "LeetCode", Icon: Code2 },
+];
 
+interface SocialLinksProps {
+  tone?: "default" | "inverted";
+}
+
+export default function SocialLinks({ tone = "default" }: SocialLinksProps) {
   return (
-    <div className="flex gap-4">
-      <Link
-        href={personalInfo.github}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-slate-400 hover:text-indigo-400 transition-colors"
-        aria-label="GitHub"
-      >
-        <Github className="w-6 h-6" />
-      </Link>
-      <Link
-        href={personalInfo.linkedin}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-slate-400 hover:text-indigo-400 transition-colors"
-        aria-label="LinkedIn"
-      >
-        <Linkedin className="w-6 h-6" />
-      </Link>
-      {personalInfo.codeforces && (
+    <div className="flex gap-3">
+      {links.map(({ href, label, Icon }) => (
         <Link
-          href={personalInfo.codeforces}
+          key={label}
+          href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-slate-400 hover:text-indigo-400 transition-colors"
-          aria-label="Codeforces"
-          title="Codeforces"
+          aria-label={label}
+          title={label}
+          className={cn(
+            "transition-colors",
+            tone === "inverted"
+              ? "text-stone-400 hover:text-white"
+              : "text-stone-500 hover:text-indigo-600"
+          )}
         >
-          <Trophy className="w-6 h-6" />
+          <Icon className="h-5 w-5" />
         </Link>
-      )}
-      {personalInfo.leetcode && (
-        <Link
-          href={personalInfo.leetcode}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-slate-400 hover:text-indigo-400 transition-colors"
-          aria-label="LeetCode"
-          title="LeetCode"
-        >
-          <Code2 className="w-6 h-6" />
-        </Link>
-      )}
-      <button
-        onClick={handleCopyEmail}
-        className="text-slate-400 hover:text-indigo-400 transition-colors cursor-pointer"
-        aria-label="Copy Email"
-        title="Copy email to clipboard"
+      ))}
+      <Link
+        href={`mailto:${personalInfo.email}`}
+        aria-label="Email"
+        title="Email"
+        className={cn(
+          "transition-colors",
+          tone === "inverted"
+            ? "text-stone-400 hover:text-white"
+            : "text-stone-500 hover:text-indigo-600"
+        )}
       >
-        <Mail className="w-6 h-6" />
-      </button>
+        <Mail className="h-5 w-5" />
+      </Link>
     </div>
   );
 }

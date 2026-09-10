@@ -1,24 +1,39 @@
 import type { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google";
+import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import { ClientLayout } from "@/component/layout/ClientLayout";
-import { Toaster } from "sonner";
-import AIChatbot from "@/component/chat/AIChatbot";
 
-const spaceGrotesk = Space_Grotesk({ 
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-space-grotesk",
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-fraunces",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Tanjil Bin Mohiuddin | Software Engineer",
-  description: "Portfolio of Tanjil Bin Mohiuddin - Software Engineer and Full-Stack Developer specializing in ASP.NET, NestJS, and Next.js",
-  keywords: ["Software Engineer", "Full-Stack Developer", "Web Developer", "ASP.NET", "NestJS", "Next.js", "Bangladesh"],
+  title: "Tanjil Bin Mohiuddin | Associate Backend Developer",
+  description:
+    "Portfolio of Tanjil Bin Mohiuddin - Associate Backend Developer at Akij iBOS Limited, building enterprise ERP systems with ASP.NET Core and NestJS. Seeking research and PhD opportunities.",
+  keywords: [
+    "Backend Developer",
+    "Software Engineer",
+    "Full-Stack Developer",
+    "ASP.NET Core",
+    "NestJS",
+    "Next.js",
+    "Bangladesh",
+  ],
   authors: [{ name: "Tanjil Bin Mohiuddin" }],
   openGraph: {
-    title: "Tanjil Bin Mohiuddin | Software Engineer",
-    description: "Portfolio of Tanjil Bin Mohiuddin - Software Engineer and Full-Stack Developer",
+    title: "Tanjil Bin Mohiuddin | Associate Backend Developer",
+    description:
+      "Portfolio of Tanjil Bin Mohiuddin - Associate Backend Developer at Akij iBOS Limited",
     type: "website",
   },
 };
@@ -29,21 +44,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body className={spaceGrotesk.className} suppressHydrationWarning>
-        <Toaster 
-          position="top-right" 
-          theme="dark"
-          toastOptions={{
-            style: {
-              background: 'rgb(15 23 42)',
-              color: 'rgb(226 232 240)',
-              border: '1px solid rgb(51 65 85)',
-            },
-          }}
-        />
+    <html
+      lang="en"
+      className={`${inter.variable} ${fraunces.variable} scroll-smooth`}
+    >
+      <body className="font-sans">
         <ClientLayout>{children}</ClientLayout>
-        <AIChatbot />
       </body>
     </html>
   );

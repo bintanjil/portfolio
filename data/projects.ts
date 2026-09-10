@@ -3,7 +3,6 @@ export interface Project {
   title: string;
   description: string;
   longDescription: string;
-  image: string;
   technologies: string[];
   features: string[];
   github?: string;
@@ -14,44 +13,36 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "healthcare-management-api",
-    title: "Healthcare Management API",
-    description: "Enterprise-grade 3-tier healthcare management system with RESTful API",
-    longDescription: "Architected a robust 3-tier enterprise application using ASP.NET with clear separation of concerns across Business Logic Layer (BLL), Data Access Layer (DAL), and Application Layer. Implemented SOLID principles and Code First approach with Entity Framework to ensure scalable and maintainable architecture supporting concurrent database operations.",
-    image: "/projects/healthcare.jpg",
+    title: "Health Care Management API",
+    description: "Enterprise-grade 3-tier healthcare management REST API",
+    longDescription:
+      "Built a 3-tier enterprise application following SOLID principles with Entity Framework using the Code First approach. Developed RESTful APIs for patient records, appointments, and medical staff management with concurrent database support.",
     technologies: ["ASP.NET", "C#", "Entity Framework", "SQL Server", "RESTful API"],
     features: [
-      "3-tier architecture with BLL, DAL, and Application layers",
-      "SOLID principles implementation for maintainability",
-      "Code First approach with Entity Framework",
-      "RESTful API endpoints for CRUD operations",
-      "Patient records and appointment management",
-      "Medical staff management system",
-      "Concurrent database operations support"
+      "3-tier architecture with clear separation of concerns",
+      "SOLID principles and Code First Entity Framework",
+      "RESTful APIs for patient records and appointments",
+      "Medical staff management with concurrent database support",
     ],
-    github: "https://github.com/bintanjil/Health-Care-Management-Api-Advanced-.Net",
-    category: "Enterprise Application"
+    github:
+      "https://github.com/bintanjil/Health-Care-Management-Api-Advanced-.Net",
+    category: "Enterprise Application",
   },
   {
     id: "gadgeto-ecommerce",
-    title: "Gadgeto - E-commerce Platform",
-    description: "Full-stack e-commerce platform with comprehensive product catalog and order processing",
-    longDescription: "Engineered a complete e-commerce solution using NestJS for backend, Next.js for frontend, and PostgreSQL for database. Features include comprehensive product catalog, order processing, admin panel with role-based access control, and automated email notifications.",
-    image: "/projects/gadgeto.jpg",
+    title: "Gadgeto – E-commerce Platform",
+    description: "Full-stack e-commerce platform with catalog, orders, and authentication",
+    longDescription:
+      "Engineered a full-stack e-commerce platform with a product catalog, order processing, and user authentication. Implemented an admin panel with role-based access control, form validation (Zod), JWT authentication, and email notifications.",
     technologies: ["NestJS", "Next.js", "PostgreSQL", "JWT", "Zod", "Axios", "Mailer"],
     features: [
-      "Comprehensive product catalog management",
-      "Order processing and tracking system",
+      "Product catalog and order processing",
+      "User authentication with JWT",
       "Admin panel with role-based access control",
-      "Product, user, and order management",
-      "Efficient inventory tracking",
-      "User administration dashboard",
-      "Form validation with Zod",
-      "Secure authentication with JWT",
-      "Automated email notifications via Mailer",
-      "API communication with Axios"
+      "Form validation with Zod and email notifications",
     ],
     github: "https://github.com/bintanjil/the-gadgeto-backend",
     demo: "https://github.com/bintanjil/The-Gadgeto-an-Ecommerce-Platform",
-    category: "Full-Stack Development"
-  }
+    category: "Full-Stack Development",
+  },
 ];

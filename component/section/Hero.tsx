@@ -1,164 +1,137 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { personalInfo } from "@/data/personal";
 import Button from "@/component/ui/button";
 import SocialLinks from "@/component/common/SocialLinks";
-import AnimatedBackground from "@/component/common/AnimatedBackground";
-import { TextScramble, ScrollReveal, ParallaxSection } from "@/component/animations";
-import { TypingAnimation, GlitchText } from "@/component/effects";
+import Reveal from "@/component/common/Reveal";
+import TypingRoles from "@/component/common/TypingRoles";
+import CountUp from "@/component/common/CountUp";
+import { ArrowDown, ArrowRight, Download, FlaskConical, MapPin } from "lucide-react";
 import Link from "next/link";
-import { Download, ArrowRight, Sparkles } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { toast } from "sonner";
-import { playSound } from "@/lib/sounds";
+
+const stats = [
+  { end: 3.77, decimals: 2, label: "CGPA at AIUB" },
+  { end: 1211, decimals: 0, label: "Codeforces Rating" },
+  { end: 1653, decimals: 0, label: "LeetCode Rating" },
+  { end: 519, decimals: 0, label: "ICPC Dhaka Rank" },
+];
 
 export default function Hero() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-  const handleDownloadCV = () => {
-    playSound('notification');
-    toast.success("CV Download Started!", {
-      description: "Your download will begin shortly",
-      duration: 2000,
-    });
-  };
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">{/* Floating tech badges */}
-        <div className="absolute top-20 left-1/4 px-3 py-1.5 rounded-full bg-slate-950/90 backdrop-blur-sm border border-indigo-500/30 text-xs text-indigo-300 font-medium animate-float shadow-lg shadow-indigo-500/20" style={{ animationDelay: '0s', animationDuration: '6s' }} suppressHydrationWarning>
-          ASP.NET
-        </div>
-        <div className="absolute top-1/3 right-1/4 px-3 py-1.5 rounded-full bg-slate-950/90 backdrop-blur-sm border border-violet-500/30 text-xs text-violet-300 font-medium animate-float shadow-lg shadow-violet-500/20" style={{ animationDelay: '2s', animationDuration: '7s' }} suppressHydrationWarning>
-          NestJS
-        </div>
-        <div className="absolute bottom-1/4 left-1/5 px-3 py-1.5 rounded-full bg-slate-950/90 backdrop-blur-sm border border-purple-500/30 text-xs text-purple-300 font-medium animate-float shadow-lg shadow-purple-500/20" style={{ animationDelay: '4s', animationDuration: '8s' }} suppressHydrationWarning>
-          C++
-        </div>
+    <section
+      id="home"
+      className="relative overflow-hidden bg-gradient-to-b from-indigo-50/70 via-[#faf8f4] to-[#faf8f4]"
+    >
+      <div className="grid-light pointer-events-none absolute inset-0 opacity-60" />
+      <div className="pointer-events-none absolute -left-24 top-0 h-72 w-72 rounded-full bg-indigo-200/40 blur-3xl animate-blob" />
+      <div className="pointer-events-none absolute right-0 top-24 h-72 w-72 rounded-full bg-amber-200/30 blur-3xl animate-blob animation-delay-2000" />
 
-      <div className="section-container relative z-10" suppressHydrationWarning>
-        <div className="grid lg:grid-cols-2 gap-12 items-center" suppressHydrationWarning>
-          {/* Text Content */}
-          <div
-            className={`space-y-6 transition-all duration-1000 ${
-              isVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-10"
-            }`}
-            suppressHydrationWarning
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 text-indigo-300 text-sm font-medium backdrop-blur-sm border border-indigo-500/20" suppressHydrationWarning>
-              <Sparkles className="w-4 h-4 animate-pulse" />
-              <span>Available for opportunities</span>
-            </div>
+      <div className="section-container relative py-20 sm:py-24">
+        <div className="grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <Reveal>
+              <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-sm font-medium text-emerald-700">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
+                Open to opportunities
+              </span>
+            </Reveal>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-100 leading-tight">
-              <span className="block text-3xl md:text-4xl font-semibold text-slate-400 mb-2">Hi, I'm</span>
-              <GlitchText>
-                <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-purple-400 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(139,92,246,0.5)]">
-                  <TextScramble text={personalInfo.name} />
-                </span>
-              </GlitchText>
-            </h1>
+            <Reveal delay={80}>
+              <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-stone-900 sm:text-5xl lg:text-6xl">
+                Hi, I&apos;m <span className="text-gradient">Tanjil</span>
+                <br />
+                Bin Mohiuddin
+              </h1>
+            </Reveal>
 
-            <div className="text-2xl md:text-3xl font-bold text-transparent bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text" suppressHydrationWarning>
-              <TypingAnimation
-                texts={[
-                  personalInfo.title,
-                  "Full-Stack Developer",
-                  "Competitive Programmer",
-                  "Problem Solver"
-                ]}
-                typingSpeed={80}
-                deletingSpeed={50}
-                pauseDuration={2500}
-              />
-            </div>
+            <Reveal delay={130}>
+              <p className="mt-5 text-lg sm:text-xl">
+                <TypingRoles roles={personalInfo.roles} />
+              </p>
+              <p className="mt-2 flex items-center gap-1.5 text-sm text-stone-500">
+                <MapPin className="h-4 w-4" />
+                {personalInfo.location}
+              </p>
+            </Reveal>
 
-            <p className="text-lg text-slate-400 leading-relaxed max-w-xl">
-              {personalInfo.bio}
-            </p>
+            <Reveal delay={180}>
+              <p className="mt-6 max-w-xl leading-relaxed text-stone-600">
+                {personalInfo.bio}
+              </p>
+            </Reveal>
 
-            <div className="flex flex-wrap gap-4 pt-4" suppressHydrationWarning>
-              <motion.div whileHover={{ scale: 1.1, y: -5 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 400, damping: 15 }}>
-              <Link href="/contact" prefetch={true}>
-                <Button
-                  size="lg"
-                  className="group bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 hover:from-indigo-500 hover:via-violet-500 hover:to-purple-500 text-white shadow-lg hover:shadow-[0_20px_40px_rgba(99,102,241,0.6)] transition-all duration-300 border-0"
-                >
-                  Get In Touch
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.1, y: -5 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 400, damping: 15 }}>
-              <Link href="/resume/Tanjil_Cv.pdf" target="_blank" onClick={handleDownloadCV}>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="border-2 border-slate-700 hover:bg-slate-900/70 hover:border-indigo-400 hover:shadow-[0_10px_30px_rgba(99,102,241,0.4)] transition-all duration-300"
-                >
-                  <Download className="w-4 h-4 mr-2" />
-                  Download CV
-                </Button>
-              </Link>
-              </motion.div>
-            </div>
+            <Reveal delay={230}>
+              <div className="mt-5 inline-flex items-center gap-2 rounded-lg border border-indigo-200 bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-700">
+                <FlaskConical className="h-4 w-4" />
+                {personalInfo.seeking}
+              </div>
+            </Reveal>
 
-            <div className="pt-6" suppressHydrationWarning>
-              <SocialLinks />
-            </div>
+            <Reveal delay={280}>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link href="#contact">
+                  <Button size="lg">
+                    Get In Touch
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="/resume/Tanjil_Cv.pdf" target="_blank">
+                  <Button variant="outline" size="lg">
+                    <Download className="mr-2 h-4 w-4" />
+                    Download CV
+                  </Button>
+                </Link>
+              </div>
+            </Reveal>
+
+            <Reveal delay={330}>
+              <div className="mt-8">
+                <SocialLinks />
+              </div>
+            </Reveal>
           </div>
 
-          {/* Profile Picture */}
-          <div
-            className={`relative transition-all duration-1000 delay-300 ${
-              isVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 translate-x-10"
-            }`}
-            suppressHydrationWarning
-          >
-            <div className="relative w-full max-w-md mx-auto" suppressHydrationWarning>
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -left-4 w-72 h-72 bg-gradient-to-r from-indigo-600 to-violet-600 rounded-full opacity-20 blur-3xl animate-pulse" suppressHydrationWarning />
-              <div className="absolute -bottom-4 -right-4 w-72 h-72 bg-gradient-to-r from-violet-600 to-purple-600 rounded-full opacity-20 blur-3xl animate-pulse animation-delay-1000" suppressHydrationWarning />
-
-              {/* Profile image container */}
-              <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl ring-4 ring-indigo-500/30 transform hover:scale-105 hover:rotate-2 transition-all duration-500 animate-bounceIn group" suppressHydrationWarning>
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-violet-500/20 group-hover:opacity-30 transition-opacity" suppressHydrationWarning />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" suppressHydrationWarning />
+          <Reveal delay={160} className="flex justify-center lg:justify-end">
+            <div className="relative">
+              <div className="absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-br from-indigo-100 to-amber-100" />
+              <div className="relative aspect-square w-64 overflow-hidden rounded-3xl border border-stone-200 shadow-xl sm:w-80">
                 <Image
                   src="/tanjil.jpeg"
                   alt={personalInfo.name}
                   fill
-                  className="object-cover"
                   priority
                   unoptimized
+                  className="object-cover"
                 />
               </div>
-
-              {/* Floating badges */}
-              <div className="absolute -top-6 -right-6 bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-lg p-4 animate-float border border-slate-700" suppressHydrationWarning>
-                <div className="flex items-center gap-2" suppressHydrationWarning>
-                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" suppressHydrationWarning />
-                  <span className="text-sm font-medium text-slate-200">Available</span>
-                </div>
+              <div className="absolute -bottom-4 -left-4 rounded-xl border border-stone-200 bg-white px-4 py-3 shadow-xl">
+                <p className="text-xs text-stone-500">Currently</p>
+                <p className="text-sm font-semibold text-stone-900">
+                  Backend Developer @ Akij iBOS
+                </p>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
-      </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce" suppressHydrationWarning>
-        <div className="w-6 h-10 border-2 border-slate-600 rounded-full p-1" suppressHydrationWarning>
-          <div className="w-1.5 h-3 bg-indigo-400 rounded-full mx-auto animate-scroll" suppressHydrationWarning />
+        <div className="mt-16 grid grid-cols-2 gap-6 border-t border-stone-200 pt-8 sm:grid-cols-4">
+          {stats.map((stat) => (
+            <div key={stat.label}>
+              <div className="font-display text-3xl font-bold text-stone-900">
+                <CountUp end={stat.end} decimals={stat.decimals} />
+              </div>
+              <div className="mt-1 text-sm text-stone-500">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 flex justify-center">
+          <Link
+            href="#about"
+            aria-label="Scroll to about"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-500 shadow-sm transition-colors hover:text-indigo-600"
+          >
+            <ArrowDown className="h-4 w-4" />
+          </Link>
         </div>
       </div>
     </section>
