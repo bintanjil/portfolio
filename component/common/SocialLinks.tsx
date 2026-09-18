@@ -30,8 +30,8 @@ export default function SocialLinks({ tone = "default" }: SocialLinksProps) {
           className={cn(
             "transition-colors",
             tone === "inverted"
-              ? "text-stone-400 hover:text-white"
-              : "text-stone-500 hover:text-indigo-600"
+              ? "text-neutral-400 hover:text-white"
+              : "text-neutral-500 hover:text-green-800"
           )}
         >
           <Icon className="h-5 w-5" />
@@ -44,8 +44,8 @@ export default function SocialLinks({ tone = "default" }: SocialLinksProps) {
         className={cn(
           "transition-colors",
           tone === "inverted"
-            ? "text-stone-400 hover:text-white"
-            : "text-stone-500 hover:text-indigo-600"
+            ? "text-neutral-400 hover:text-white"
+            : "text-neutral-500 hover:text-green-800"
         )}
       >
         <Mail className="h-5 w-5" />

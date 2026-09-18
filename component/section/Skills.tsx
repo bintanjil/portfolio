@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/component/ui/card";
 
 export default function Skills() {
   return (
-    <section id="skills" className="section-padding border-y border-stone-200 bg-white">
+    <section id="skills" className="section-padding border-y border-green-100 bg-green-50/40">
       <div className="section-container">
         <SectionTitle
           eyebrow="Toolbox"
@@ -17,7 +17,7 @@ export default function Skills() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {skills.map((group, index) => (
             <Reveal key={group.category} delay={index * 70}>
-              <Card className="h-full transition-transform duration-300 hover:-transtone-y-1 hover:shadow-md">
+              <Card className="h-full transition-transform duration-300 hover:-translate-y-1 hover:shadow-md">
                 <CardHeader>
                   <CardTitle className="text-base">{group.category}</CardTitle>
                 </CardHeader>

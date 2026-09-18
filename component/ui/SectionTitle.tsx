@@ -18,23 +18,23 @@ export default function SectionTitle({
   return (
     <div className={cn("mb-12", centered && "mx-auto text-center", className)}>
       {eyebrow && (
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-indigo-600">
+        <p
+          className={cn(
+            "mb-3 flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-green-800",
+            centered && "justify-center"
+          )}
+        >
+          <span className="h-1.5 w-1.5 rounded-full bg-green-700" />
           {eyebrow}
         </p>
       )}
-      <h2 className="font-display text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl">
+      <h2 className="text-4xl font-black tracking-tight text-neutral-950 sm:text-5xl">
         {title}
       </h2>
-      <div
-        className={cn(
-          "mt-5 h-1 w-14 rounded-full bg-indigo-600",
-          centered && "mx-auto"
-        )}
-      />
       {subtitle && (
         <p
           className={cn(
-            "mt-5 text-base text-stone-500 sm:text-lg",
+            "mt-4 text-base text-neutral-500 sm:text-lg",
             centered && "mx-auto max-w-2xl"
           )}
         >

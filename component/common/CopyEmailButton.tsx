@@ -25,7 +25,7 @@ export default function CopyEmailButton({ email }: CopyEmailButtonProps) {
   return (
     <button
       onClick={handleCopy}
-      className="inline-flex items-center gap-2 rounded-lg border border-stone-300 bg-white px-4 py-2 text-sm font-medium text-stone-700 transition-colors hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700"
+      className="inline-flex items-center gap-2 rounded-lg border border-neutral-300 bg-white px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:border-green-300 hover:bg-green-50 hover:text-green-900"
     >
       {copied ? (
         <Check className="h-4 w-4 text-green-600" />

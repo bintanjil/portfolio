@@ -16,7 +16,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   const [open, setOpen] = useState(false);
 
   return (
-    <Card className="flex h-full flex-col border-t-4 border-t-indigo-600 transition-all duration-300 hover:-transtone-y-1 hover:shadow-lg">
+    <Card className="flex h-full flex-col border-t-4 border-t-green-800 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
       <CardHeader>
         <div className="mb-2">
           <Badge variant="secondary">{project.category}</Badge>
@@ -30,7 +30,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Source code"
-                className="text-stone-500 transition-colors hover:text-indigo-600"
+                className="text-neutral-500 transition-colors hover:text-green-800"
               >
                 <Github className="h-5 w-5" />
               </Link>
@@ -41,20 +41,20 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Live demo"
-                className="text-stone-500 transition-colors hover:text-indigo-600"
+                className="text-neutral-500 transition-colors hover:text-green-800"
               >
                 <ExternalLink className="h-5 w-5" />
               </Link>
             )}
           </div>
         </CardTitle>
-        <p className="text-sm text-stone-600">{project.description}</p>
+        <p className="text-sm text-neutral-600">{project.description}</p>
       </CardHeader>
 
       <CardContent className="flex flex-1 flex-col">
         <p
           className={cn(
-            "text-sm leading-relaxed text-stone-600",
+            "text-sm leading-relaxed text-neutral-600",
             !open && "line-clamp-2"
           )}
         >
@@ -63,7 +63,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
         <button
           onClick={() => setOpen((prev) => !prev)}
-          className="mt-3 inline-flex w-fit items-center gap-1 text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-700"
+          className="mt-3 inline-flex w-fit items-center gap-1 text-sm font-medium text-green-800 transition-colors hover:text-green-900"
         >
           {open ? "Show less" : "Show details"}
           <ChevronDown
@@ -78,13 +78,13 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           )}
         >
           <div className="min-h-0">
-            <h4 className="mb-2 text-sm font-semibold text-stone-900">
+            <h4 className="mb-2 text-sm font-semibold text-neutral-900">
               Key Features
             </h4>
             <ul className="space-y-1">
               {project.features.map((feature) => (
-                <li key={feature} className="flex gap-2 text-sm text-stone-600">
-                  <span className="text-indigo-600">•</span>
+                <li key={feature} className="flex gap-2 text-sm text-neutral-600">
+                  <span className="text-green-800">•</span>
                   <span>{feature}</span>
                 </li>
               ))}
@@ -92,7 +92,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           </div>
         </div>
 
-        <div className="mt-4 flex flex-wrap gap-2 border-t border-stone-100 pt-4">
+        <div className="mt-4 flex flex-wrap gap-2 border-t border-neutral-100 pt-4">
           {project.technologies.map((tech) => (
             <Badge key={tech} variant="secondary">
               {tech}

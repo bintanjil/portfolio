@@ -1,137 +1,62 @@
 import { personalInfo } from "@/data/personal";
-import Button from "@/component/ui/button";
 import SocialLinks from "@/component/common/SocialLinks";
-import Reveal from "@/component/common/Reveal";
-import TypingRoles from "@/component/common/TypingRoles";
-import CountUp from "@/component/common/CountUp";
-import { ArrowDown, ArrowRight, Download, FlaskConical, MapPin } from "lucide-react";
+import LiveClock from "@/component/common/LiveClock";
+import { ArrowRight, Download, MapPin } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
-
-const stats = [
-  { end: 3.77, decimals: 2, label: "CGPA at AIUB" },
-  { end: 1211, decimals: 0, label: "Codeforces Rating" },
-  { end: 1653, decimals: 0, label: "LeetCode Rating" },
-  { end: 519, decimals: 0, label: "ICPC Dhaka Rank" },
-];
 
 export default function Hero() {
   return (
-    <section
-      id="home"
-      className="relative overflow-hidden bg-gradient-to-b from-indigo-50/70 via-[#faf8f4] to-[#faf8f4]"
-    >
-      <div className="grid-light pointer-events-none absolute inset-0 opacity-60" />
-      <div className="pointer-events-none absolute -left-24 top-0 h-72 w-72 rounded-full bg-indigo-200/40 blur-3xl animate-blob" />
-      <div className="pointer-events-none absolute right-0 top-24 h-72 w-72 rounded-full bg-amber-200/30 blur-3xl animate-blob animation-delay-2000" />
+    <section id="home" className="relative overflow-hidden bg-white">
+      <div className="dot-grid absolute -right-4 top-6 hidden h-28 w-40 sm:block" />
 
-      <div className="section-container relative py-20 sm:py-24">
-        <div className="grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
-          <div>
-            <Reveal>
-              <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-sm font-medium text-emerald-700">
-                <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
-                Open to opportunities
-              </span>
-            </Reveal>
+      <div className="section-container relative py-16 sm:py-20">
+        <h1 className="text-[3.25rem] font-black leading-[0.95] tracking-tighter text-neutral-950 sm:text-7xl lg:text-8xl">
+          Tanjil Bin
+          <br />
+          Mohiuddin
+        </h1>
 
-            <Reveal delay={80}>
-              <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-stone-900 sm:text-5xl lg:text-6xl">
-                Hi, I&apos;m <span className="text-gradient">Tanjil</span>
-                <br />
-                Bin Mohiuddin
-              </h1>
-            </Reveal>
+        <p className="mt-6 max-w-2xl text-base leading-relaxed text-neutral-600 sm:text-lg">
+          {personalInfo.title} at{" "}
+          <span className="font-medium text-neutral-950 underline decoration-neutral-300 underline-offset-4">
+            Akij iBOS Limited
+          </span>
+          , building enterprise ERP systems on ASP.NET Core and NestJS.
+          Competitive programmer and aspiring researcher interested in
+          distributed systems and databases.
+        </p>
 
-            <Reveal delay={130}>
-              <p className="mt-5 text-lg sm:text-xl">
-                <TypingRoles roles={personalInfo.roles} />
-              </p>
-              <p className="mt-2 flex items-center gap-1.5 text-sm text-stone-500">
-                <MapPin className="h-4 w-4" />
-                {personalInfo.location}
-              </p>
-            </Reveal>
-
-            <Reveal delay={180}>
-              <p className="mt-6 max-w-xl leading-relaxed text-stone-600">
-                {personalInfo.bio}
-              </p>
-            </Reveal>
-
-            <Reveal delay={230}>
-              <div className="mt-5 inline-flex items-center gap-2 rounded-lg border border-indigo-200 bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-700">
-                <FlaskConical className="h-4 w-4" />
-                {personalInfo.seeking}
-              </div>
-            </Reveal>
-
-            <Reveal delay={280}>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link href="#contact">
-                  <Button size="lg">
-                    Get In Touch
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-                <Link href="/resume/Tanjil_Cv.pdf" target="_blank">
-                  <Button variant="outline" size="lg">
-                    <Download className="mr-2 h-4 w-4" />
-                    Download CV
-                  </Button>
-                </Link>
-              </div>
-            </Reveal>
-
-            <Reveal delay={330}>
-              <div className="mt-8">
-                <SocialLinks />
-              </div>
-            </Reveal>
-          </div>
-
-          <Reveal delay={160} className="flex justify-center lg:justify-end">
-            <div className="relative">
-              <div className="absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-br from-indigo-100 to-amber-100" />
-              <div className="relative aspect-square w-64 overflow-hidden rounded-3xl border border-stone-200 shadow-xl sm:w-80">
-                <Image
-                  src="/tanjil.jpeg"
-                  alt={personalInfo.name}
-                  fill
-                  priority
-                  unoptimized
-                  className="object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-4 -left-4 rounded-xl border border-stone-200 bg-white px-4 py-3 shadow-xl">
-                <p className="text-xs text-stone-500">Currently</p>
-                <p className="text-sm font-semibold text-stone-900">
-                  Backend Developer @ Akij iBOS
-                </p>
-              </div>
-            </div>
-          </Reveal>
+        <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1.5 font-mono text-xs uppercase tracking-wider text-neutral-500">
+          <span className="inline-flex items-center gap-1.5">
+            <MapPin className="h-3.5 w-3.5" />
+            {personalInfo.location}
+          </span>
+          <span className="text-neutral-300">·</span>
+          <span className="inline-flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-green-600" />
+            <LiveClock timeZone="Asia/Dhaka" label="+06 BST" />
+          </span>
+          <span className="text-neutral-300">·</span>
+          <span>{personalInfo.seeking}</span>
         </div>
 
-        <div className="mt-16 grid grid-cols-2 gap-6 border-t border-stone-200 pt-8 sm:grid-cols-4">
-          {stats.map((stat) => (
-            <div key={stat.label}>
-              <div className="font-display text-3xl font-bold text-stone-900">
-                <CountUp end={stat.end} decimals={stat.decimals} />
-              </div>
-              <div className="mt-1 text-sm text-stone-500">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-12 flex justify-center">
+        <div className="mt-8 flex flex-wrap items-center gap-3">
           <Link
-            href="#about"
-            aria-label="Scroll to about"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-500 shadow-sm transition-colors hover:text-indigo-600"
+            href="#projects"
+            className="inline-flex h-11 items-center gap-2 rounded-full bg-neutral-950 px-5 font-mono text-sm text-white transition-colors hover:bg-neutral-800"
           >
-            <ArrowDown className="h-4 w-4" />
+            See my work
+            <ArrowRight className="h-4 w-4" />
           </Link>
+          <Link
+            href="/resume/Tanjil_Cv.pdf"
+            target="_blank"
+            className="inline-flex h-11 items-center gap-2 rounded-full border border-neutral-300 px-5 font-mono text-sm text-neutral-800 transition-colors hover:border-neutral-950"
+          >
+            <Download className="h-4 w-4" />
+            CV
+          </Link>
+          <SocialLinks />
         </div>
       </div>
     </section>

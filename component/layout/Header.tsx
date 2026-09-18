@@ -50,52 +50,45 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full border-b bg-[#faf8f4]/90 backdrop-blur-md transition-shadow duration-300",
-        scrolled ? "border-stone-200 shadow-sm" : "border-stone-200"
+        "sticky top-0 z-50 w-full border-b border-neutral-200 bg-white/90 backdrop-blur-sm transition-shadow duration-300",
+        scrolled && "shadow-sm"
       )}
     >
       <nav className="section-container">
-        <div className="flex h-16 items-center justify-between">
-          <Link
-            href="#home"
-            className="font-display text-lg font-bold tracking-tight text-stone-900"
-          >
-            Tanjil<span className="text-indigo-600">.</span>
+        <div className="flex h-16 items-center justify-between gap-4">
+          <Link href="#home" className="flex items-center gap-2.5">
+            <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-neutral-950 font-mono text-xs font-semibold text-white">
+              TM
+            </span>
+            <span className="hidden text-sm font-semibold text-neutral-950 sm:inline">
+              Tanjil Bin Mohiuddin
+            </span>
           </Link>
 
-          <div className="hidden items-center gap-0.5 xl:flex">
+          <div className="hidden items-center gap-1 xl:flex">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "group relative rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                  "rounded-full px-3 py-1.5 font-mono text-xs uppercase tracking-wider transition-colors",
                   active === item.href
-                    ? "text-indigo-700"
-                    : "text-stone-600 hover:text-stone-900"
+                    ? "bg-neutral-950 text-white"
+                    : "text-neutral-500 hover:text-neutral-950"
                 )}
               >
                 {item.name}
-                <span
-                  className={cn(
-                    "absolute inset-x-3 bottom-1 h-0.5 origin-left rounded-full bg-indigo-600 transition-transform duration-300",
-                    active === item.href
-                      ? "scale-x-100"
-                      : "scale-x-0 group-hover:scale-x-100"
-                  )}
-                />
               </Link>
             ))}
-            <Link
-              href="#contact"
-              className="ml-3 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-indigo-700"
-            >
-              Hire Me
-            </Link>
           </div>
 
+          <span className="hidden items-center gap-2 rounded-full bg-neutral-950 py-1.5 pl-3 pr-4 font-mono text-xs text-white lg:inline-flex">
+            <span className="h-1.5 w-1.5 flex-shrink-0 animate-pulse rounded-full bg-green-500" />
+            Open to opportunities
+          </span>
+
           <button
-            className="rounded-md p-2 text-stone-600 transition-colors hover:bg-stone-100 xl:hidden"
+            className="rounded-md p-2 text-neutral-600 transition-colors hover:bg-neutral-100 xl:hidden"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -104,17 +97,17 @@ export default function Header() {
         </div>
 
         {isOpen && (
-          <div className="border-t border-stone-200 py-2 xl:hidden">
+          <div className="border-t border-neutral-200 py-2 xl:hidden">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
                 className={cn(
-                  "block rounded-md px-3 py-2 text-sm font-medium",
+                  "block rounded-md px-3 py-2 font-mono text-xs uppercase tracking-wider",
                   active === item.href
-                    ? "bg-indigo-50 text-indigo-700"
-                    : "text-stone-600 hover:bg-stone-50"
+                    ? "bg-neutral-950 text-white"
+                    : "text-neutral-500 hover:bg-neutral-50"
                 )}
               >
                 {item.name}

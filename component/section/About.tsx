@@ -53,8 +53,8 @@ export default function About() {
 
         <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
           <Reveal>
-            <div className="space-y-4 leading-relaxed text-stone-600">
-              <p>
+            <div className="space-y-4 leading-relaxed text-neutral-600">
+              <p className="text-base sm:text-lg">
                 I&apos;m {personalInfo.name}, an Associate Backend Developer at
                 Akij iBOS Limited, where I work on enterprise ERP systems for
                 organizations such as Bangladesh Military Academy, Paragon
@@ -69,13 +69,13 @@ export default function About() {
                 challenges.
               </p>
 
-              <div className="flex gap-3 rounded-xl border border-indigo-100 bg-indigo-50 p-4">
-                <FlaskConical className="h-5 w-5 flex-shrink-0 text-indigo-600" />
+              <div className="flex gap-3 rounded-xl border border-green-100 bg-green-50 p-4">
+                <FlaskConical className="h-5 w-5 flex-shrink-0 text-green-800" />
                 <div>
-                  <p className="text-sm font-semibold text-indigo-900">
+                  <p className="text-sm font-semibold text-green-950">
                     {personalInfo.seeking}
                   </p>
-                  <p className="mt-1 text-sm leading-relaxed text-indigo-800/80">
+                  <p className="mt-1 text-sm leading-relaxed text-green-900/80">
                     {personalInfo.research}
                   </p>
                 </div>
@@ -92,14 +92,14 @@ export default function About() {
                 <ul className="space-y-4">
                   {facts.map(({ icon: Icon, label, value }) => (
                     <li key={label} className="flex items-start gap-3">
-                      <span className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-stone-100 text-stone-700">
+                      <span className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-neutral-100 text-neutral-700">
                         <Icon className="h-4 w-4" />
                       </span>
                       <div>
-                        <p className="text-xs uppercase tracking-wider text-stone-400">
+                        <p className="text-xs uppercase tracking-wider text-neutral-400">
                           {label}
                         </p>
-                        <p className="text-sm font-semibold text-stone-900">
+                        <p className="text-sm font-semibold text-neutral-900">
                           {value}
                         </p>
                       </div>
@@ -114,15 +114,15 @@ export default function About() {
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {highlights.map(({ icon: Icon, title, description }, index) => (
             <Reveal key={title} delay={index * 80}>
-              <Card className="group h-full border-t-4 border-t-indigo-600 transition-all duration-300 hover:-transtone-y-1 hover:shadow-lg">
+              <Card className="group h-full border-t-4 border-t-green-800 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                 <CardContent className="pt-6">
-                  <div className="mb-4 inline-flex rounded-lg bg-indigo-50 p-3 text-indigo-600">
+                  <div className="mb-4 inline-flex rounded-lg bg-green-50 p-3 text-green-800 ring-1 ring-inset ring-green-100">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <h3 className="mb-2 font-display font-bold text-stone-900">
+                  <h3 className="mb-2 font-bold text-neutral-900">
                     {title}
                   </h3>
-                  <p className="text-sm text-stone-600">{description}</p>
+                  <p className="text-sm text-neutral-600">{description}</p>
                 </CardContent>
               </Card>
             </Reveal>

@@ -8,7 +8,6 @@ import Research from "@/component/section/Research";
 import Achievements from "@/component/section/Achievements";
 import Cta from "@/component/section/Cta";
 import Contact from "@/component/section/Contact";
-import TechMarquee from "@/component/common/TechMarquee";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -21,11 +20,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <div className="border-b border-stone-200 bg-white py-6">
-        <div className="section-container">
-          <TechMarquee />
-        </div>
-      </div>
       <About />
       <Experience />
       <Projects />

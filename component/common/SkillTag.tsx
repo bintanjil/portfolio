@@ -8,7 +8,7 @@ export default function SkillTag({ name }: SkillTagProps) {
   return (
     <Badge
       variant="secondary"
-      className="cursor-default px-3 py-1.5 text-sm transition-colors hover:bg-indigo-50 hover:text-indigo-700"
+      className="cursor-default px-3 py-1.5 text-sm transition-colors hover:bg-green-50 hover:text-green-900"
     >
       {name}
     </Badge>

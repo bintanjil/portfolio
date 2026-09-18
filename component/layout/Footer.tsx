@@ -15,19 +15,19 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-stone-200 bg-[#f3f1ea]">
+    <footer className="border-t border-neutral-200 bg-white">
       <div className="section-container py-14">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
           <div className="space-y-3">
-            <h3 className="font-display text-lg font-bold text-stone-900">
+            <h3 className="text-xl font-black tracking-tight text-neutral-950">
               {personalInfo.name}
             </h3>
-            <p className="text-sm text-stone-500">{personalInfo.title}</p>
+            <p className="font-mono text-sm text-neutral-500">{personalInfo.title}</p>
             <SocialLinks />
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-stone-900">
+            <h4 className="mb-4 font-mono text-xs uppercase tracking-wider text-neutral-950">
               Quick Links
             </h4>
             <ul className="space-y-2">
@@ -35,7 +35,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-stone-500 transition-colors hover:text-indigo-600"
+                    className="text-sm text-neutral-500 transition-colors hover:text-green-800"
                   >
                     {link.name}
                   </Link>
@@ -45,14 +45,14 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-stone-900">
+            <h4 className="mb-4 font-mono text-xs uppercase tracking-wider text-neutral-950">
               Contact
             </h4>
-            <ul className="space-y-2 text-sm text-stone-500">
+            <ul className="space-y-2 text-sm text-neutral-500">
               <li>
                 <Link
                   href={`mailto:${personalInfo.email}`}
-                  className="flex items-center gap-2 transition-colors hover:text-indigo-600"
+                  className="flex items-center gap-2 transition-colors hover:text-green-800"
                 >
                   <Mail className="h-4 w-4" />
                   {personalInfo.email}
@@ -61,7 +61,7 @@ export default function Footer() {
               <li>
                 <Link
                   href={`tel:${personalInfo.phone}`}
-                  className="flex items-center gap-2 transition-colors hover:text-indigo-600"
+                  className="flex items-center gap-2 transition-colors hover:text-green-800"
                 >
                   <Phone className="h-4 w-4" />
                   {personalInfo.phone}
@@ -75,8 +75,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-stone-200 pt-6">
-          <p className="text-sm text-stone-500">
+        <div className="mt-10 border-t border-neutral-200 pt-6">
+          <p className="font-mono text-xs text-neutral-500">
             © {currentYear} {personalInfo.name}. All rights reserved.
           </p>
         </div>

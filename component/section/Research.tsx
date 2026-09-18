@@ -35,7 +35,7 @@ const goals = [
 
 export default function Research() {
   return (
-    <section id="research" className="section-padding border-y border-stone-200 bg-white">
+    <section id="research" className="section-padding border-y border-green-100 bg-green-50/40">
       <div className="section-container">
         <SectionTitle
           eyebrow="Academia"
@@ -44,9 +44,9 @@ export default function Research() {
         />
 
         <Reveal>
-          <div className="mb-8 flex gap-3 rounded-xl border border-indigo-200 bg-indigo-50 p-5">
-            <FlaskConical className="h-5 w-5 flex-shrink-0 text-indigo-600" />
-            <p className="text-sm leading-relaxed text-indigo-800">
+          <div className="mb-8 flex gap-3 rounded-xl border border-green-200 bg-green-50 p-5">
+            <FlaskConical className="h-5 w-5 flex-shrink-0 text-green-800" />
+            <p className="text-sm leading-relaxed text-green-900">
               {personalInfo.research}
             </p>
           </div>
@@ -56,14 +56,14 @@ export default function Research() {
           <Reveal>
             <Card className="h-full">
               <CardContent className="pt-6">
-                <h3 className="mb-4 font-semibold text-stone-900">
+                <h3 className="mb-4 font-semibold text-neutral-900">
                   Research Interests
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {interests.map((interest) => (
                     <span
                       key={interest}
-                      className="rounded-full border border-stone-200 bg-stone-50 px-3 py-1.5 text-sm text-stone-700 transition-colors hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700"
+                      className="rounded-full border border-green-100 bg-neutral-50 px-3 py-1.5 text-sm text-neutral-700 transition-colors hover:border-green-300 hover:bg-green-50 hover:text-green-900"
                     >
                       {interest}
                     </span>
@@ -76,15 +76,15 @@ export default function Research() {
           <div className="grid gap-4 sm:grid-cols-3">
             {goals.map(({ icon: Icon, title, description }, index) => (
               <Reveal key={title} delay={index * 80}>
-                <Card className="h-full transition-transform duration-300 hover:-transtone-y-1 hover:shadow-md">
+                <Card className="h-full transition-transform duration-300 hover:-translate-y-1 hover:shadow-md">
                   <CardContent className="pt-6">
-                    <div className="mb-3 inline-flex rounded-lg bg-indigo-50 p-3 text-indigo-600">
+                    <div className="mb-3 inline-flex rounded-lg bg-green-50 p-3 text-green-800 ring-1 ring-inset ring-green-100">
                       <Icon className="h-5 w-5" />
                     </div>
-                    <h3 className="mb-1 font-semibold text-stone-900">
+                    <h3 className="mb-1 font-semibold text-neutral-900">
                       {title}
                     </h3>
-                    <p className="text-sm text-stone-600">{description}</p>
+                    <p className="text-sm text-neutral-600">{description}</p>
                   </CardContent>
                 </Card>
               </Reveal>

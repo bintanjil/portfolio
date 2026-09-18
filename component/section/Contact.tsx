@@ -29,7 +29,7 @@ const details = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="section-padding bg-white">
+    <section id="contact" className="section-padding bg-green-50/40">
       <div className="section-container">
         <SectionTitle
           eyebrow="Contact"
@@ -45,14 +45,14 @@ export default function Contact() {
                 {details.map(({ icon: Icon, label, value, href }) => {
                   const content = (
                     <CardContent className="flex items-center gap-4 pt-6">
-                      <div className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
+                      <div className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg bg-green-50 text-green-800 ring-1 ring-inset ring-green-100">
                         <Icon className="h-5 w-5" />
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-stone-900">
+                        <p className="text-sm font-medium text-neutral-900">
                           {label}
                         </p>
-                        <p className="text-sm text-stone-600">{value}</p>
+                        <p className="text-sm text-neutral-600">{value}</p>
                       </div>
                     </CardContent>
                   );
@@ -72,7 +72,7 @@ export default function Contact() {
               <div className="space-y-4">
                 <CopyEmailButton email={personalInfo.email} />
                 <div>
-                  <p className="mb-3 text-sm text-stone-600">
+                  <p className="mb-3 text-sm text-neutral-600">
                     Connect with me on social media
                   </p>
                   <SocialLinks />

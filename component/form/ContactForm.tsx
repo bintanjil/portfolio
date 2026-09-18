@@ -80,7 +80,7 @@ export default function ContactForm() {
   };
 
   const inputClass =
-    "w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 placeholder-stone-500 transition-colors focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100";
+    "w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-neutral-900 placeholder-neutral-500 transition-colors focus:border-green-700 focus:outline-none focus:ring-2 focus:ring-green-100";
 
   return (
     <Card>
@@ -89,7 +89,7 @@ export default function ContactForm() {
           <div>
             <label
               htmlFor="name"
-              className="mb-2 block text-sm font-medium text-stone-700"
+              className="mb-2 block text-sm font-medium text-neutral-700"
             >
               Name <span className="text-red-500">*</span>
             </label>
@@ -108,7 +108,7 @@ export default function ContactForm() {
           <div>
             <label
               htmlFor="email"
-              className="mb-2 block text-sm font-medium text-stone-700"
+              className="mb-2 block text-sm font-medium text-neutral-700"
             >
               Email <span className="text-red-500">*</span>
             </label>
@@ -129,7 +129,7 @@ export default function ContactForm() {
           <div>
             <label
               htmlFor="subject"
-              className="mb-2 block text-sm font-medium text-stone-700"
+              className="mb-2 block text-sm font-medium text-neutral-700"
             >
               Subject <span className="text-red-500">*</span>
             </label>
@@ -150,7 +150,7 @@ export default function ContactForm() {
           <div>
             <label
               htmlFor="message"
-              className="mb-2 block text-sm font-medium text-stone-700"
+              className="mb-2 block text-sm font-medium text-neutral-700"
             >
               Message <span className="text-red-500">*</span>
             </label>
@@ -171,10 +171,10 @@ export default function ContactForm() {
           <div>
             <label
               htmlFor="file"
-              className="mb-2 block text-sm font-medium text-stone-700"
+              className="mb-2 block text-sm font-medium text-neutral-700"
             >
               Attachment (Optional)
-              <span className="ml-2 text-xs text-stone-500">
+              <span className="ml-2 text-xs text-neutral-500">
                 PDF, PNG, JPEG - Max 5MB
               </span>
             </label>
@@ -188,7 +188,7 @@ export default function ContactForm() {
             />
             <label
               htmlFor="file"
-              className="flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-dashed border-stone-300 px-4 py-3 text-sm text-stone-600 transition-colors hover:border-indigo-500 hover:text-indigo-600"
+              className="flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-dashed border-neutral-300 px-4 py-3 text-sm text-neutral-600 transition-colors hover:border-green-700 hover:text-green-800"
             >
               <Upload className="h-5 w-5" />
               <span>{fileName || "Click to upload file"}</span>

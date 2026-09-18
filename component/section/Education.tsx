@@ -20,24 +20,24 @@ export default function Education() {
             <CardHeader>
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div className="flex gap-4">
-                  <div className="inline-flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
+                  <div className="inline-flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-green-50 text-green-800 ring-1 ring-inset ring-green-100">
                     <GraduationCap className="h-6 w-6" />
                   </div>
                   <div>
                     <CardTitle>{education.institution}</CardTitle>
-                    <p className="mt-1 text-sm text-stone-600">
+                    <p className="mt-1 text-sm text-neutral-600">
                       {education.degree}
                     </p>
-                    <p className="mt-1 text-sm text-stone-600">
+                    <p className="mt-1 text-sm text-neutral-600">
                       {education.duration}
                     </p>
                   </div>
                 </div>
                 <div className="flex flex-col items-end gap-2">
                   <Badge className="bg-green-600">{education.status}</Badge>
-                  <div className="rounded-lg border border-stone-200 px-4 py-2 text-center">
-                    <p className="text-xs text-stone-600">CGPA</p>
-                    <p className="text-lg font-bold text-stone-900">
+                  <div className="rounded-lg border border-green-100 px-4 py-2 text-center">
+                    <p className="text-xs text-neutral-600">CGPA</p>
+                    <p className="text-lg font-bold text-neutral-900">
                       {education.gpa}
                     </p>
                   </div>
@@ -45,25 +45,25 @@ export default function Education() {
               </div>
             </CardHeader>
             <CardContent>
-              <h4 className="mb-3 flex items-center gap-2 font-semibold text-stone-900">
-                <Award className="h-5 w-5 text-indigo-600" />
+              <h4 className="mb-3 flex items-center gap-2 font-semibold text-neutral-900">
+                <Award className="h-5 w-5 text-green-800" />
                 Honors &amp; Awards
               </h4>
               <div className="space-y-3">
                 {education.awards.map((award) => (
                   <div
                     key={award.title}
-                    className="border-l-2 border-indigo-600 pl-4"
+                    className="border-l-2 border-green-800 pl-4"
                   >
                     <div className="flex flex-wrap items-center justify-between gap-1">
-                      <h5 className="font-medium text-stone-900">
+                      <h5 className="font-medium text-neutral-900">
                         {award.title}
                       </h5>
-                      <span className="text-xs text-stone-600">
+                      <span className="text-xs text-neutral-600">
                         {award.period}
                       </span>
                     </div>
-                    <p className="mt-0.5 text-sm text-stone-600">
+                    <p className="mt-0.5 text-sm text-neutral-600">
                       {award.description}
                     </p>
                   </div>

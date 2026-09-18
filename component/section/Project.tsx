@@ -36,8 +36,8 @@ export default function Projects() {
               className={cn(
                 "rounded-lg px-4 py-2 text-sm font-medium transition-colors",
                 active === category
-                  ? "bg-indigo-600 text-white"
-                  : "bg-stone-100 text-stone-600 hover:bg-stone-200"
+                  ? "bg-green-800 text-white"
+                  : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
               )}
             >
               {category}

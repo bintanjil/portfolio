@@ -19,18 +19,18 @@ export default function Achievements() {
         <div className="mb-6 grid gap-6 lg:grid-cols-3">
           {awards.map((award, index) => (
             <Reveal key={award.title} delay={index * 80}>
-              <Card className="h-full border-amber-200 bg-gradient-to-br from-amber-50 to-white">
+              <Card className="h-full">
                 <CardContent className="pt-6">
-                  <div className="mb-4 inline-flex rounded-lg bg-amber-100 p-3 text-amber-600">
+                  <div className="mb-4 inline-flex rounded-lg bg-amber-50 p-3 text-amber-600">
                     <Star className="h-5 w-5" />
                   </div>
-                  <h3 className="font-semibold text-stone-900">
+                  <h3 className="font-semibold text-neutral-900">
                     {award.title}
                   </h3>
-                  <p className="mt-1 text-sm font-medium text-amber-700">
+                  <p className="mt-1 text-sm font-medium text-neutral-500">
                     {award.organization} · {award.period}
                   </p>
-                  <p className="mt-2 text-sm text-stone-600">
+                  <p className="mt-2 text-sm text-neutral-600">
                     {award.description}
                   </p>
                 </CardContent>
@@ -44,7 +44,7 @@ export default function Achievements() {
             <Card className="h-full">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Trophy className="h-5 w-5 text-indigo-600" />
+                  <Trophy className="h-5 w-5 text-green-800" />
                   Competitive Programming
                 </CardTitle>
               </CardHeader>
@@ -55,22 +55,22 @@ export default function Achievements() {
                     href={platform.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between rounded-lg border border-stone-200 p-3 transition-colors hover:border-indigo-300 hover:bg-indigo-50"
+                    className="flex items-center justify-between rounded-lg border border-green-100 p-3 transition-colors hover:border-green-300 hover:bg-green-50"
                   >
                     <div>
-                      <p className="font-medium text-stone-900">
+                      <p className="font-medium text-neutral-900">
                         {platform.name}
                         {platform.handle && (
-                          <span className="ml-2 text-sm font-normal text-stone-600">
+                          <span className="ml-2 text-sm font-normal text-neutral-600">
                             @{platform.handle}
                           </span>
                         )}
                       </p>
-                      <p className="text-sm text-stone-600">
+                      <p className="text-sm text-neutral-600">
                         {platform.detail}
                       </p>
                     </div>
-                    <ExternalLink className="h-4 w-4 flex-shrink-0 text-stone-500" />
+                    <ExternalLink className="h-4 w-4 flex-shrink-0 text-neutral-500" />
                   </Link>
                 ))}
               </CardContent>
@@ -81,7 +81,7 @@ export default function Achievements() {
             <Card className="h-full">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Award className="h-5 w-5 text-indigo-600" />
+                  <Award className="h-5 w-5 text-green-800" />
                   Contest Highlights
                 </CardTitle>
               </CardHeader>
@@ -89,14 +89,14 @@ export default function Achievements() {
                 {contests.map((contest) => (
                   <div
                     key={contest.name}
-                    className="border-l-2 border-indigo-600 pl-4"
+                    className="border-l-2 border-green-800 pl-4"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <h4 className="font-medium text-stone-900">
+                        <h4 className="font-medium text-neutral-900">
                           {contest.name}
                         </h4>
-                        <p className="text-sm text-stone-600">
+                        <p className="text-sm text-neutral-600">
                           {contest.result}
                         </p>
                         <Badge variant="secondary" className="mt-2">
@@ -108,7 +108,7 @@ export default function Achievements() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Standings"
-                        className="text-stone-500 transition-colors hover:text-indigo-600"
+                        className="text-neutral-500 transition-colors hover:text-green-800"
                       >
                         <ExternalLink className="h-4 w-4" />
                       </Link>

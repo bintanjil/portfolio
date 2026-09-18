@@ -15,10 +15,10 @@ export default function Badge({
       className={cn(
         "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold",
         {
-          "bg-indigo-600 text-white": variant === "default",
-          "border border-stone-200 bg-stone-100 text-stone-700":
+          "bg-green-800 text-white": variant === "default",
+          "border border-green-100 bg-green-50 text-green-800":
             variant === "secondary",
-          "border border-stone-300 text-stone-700": variant === "outline",
+          "border border-green-200 text-green-800": variant === "outline",
         },
         className
       )}
