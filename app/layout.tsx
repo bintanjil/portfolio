@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 import { ClientLayout } from "@/component/layout/ClientLayout";
 
@@ -9,31 +9,34 @@ const inter = Inter({
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-mono",
+  weight: ["400", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-source-serif",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Tanjil Bin Mohiuddin | Associate Backend Developer",
+  title: "Tanjil Bin Mohiuddin",
   description:
-    "Portfolio of Tanjil Bin Mohiuddin - Associate Backend Developer at Akij iBOS Limited, building enterprise ERP systems with ASP.NET Core and NestJS. Seeking research and PhD opportunities.",
+    "Tanjil Bin Mohiuddin: Associate Backend Developer at Akij iBOS Limited and aspiring researcher in computer vision, machine learning, MLLMs and VLMs. Seeking research and PhD opportunities.",
   keywords: [
+    "Tanjil Bin Mohiuddin",
     "Backend Developer",
-    "Software Engineer",
-    "Full-Stack Developer",
+    "Computer Vision",
+    "Machine Learning",
+    "Vision-Language Models",
+    "PhD",
     "ASP.NET Core",
     "NestJS",
-    "Next.js",
     "Bangladesh",
   ],
   authors: [{ name: "Tanjil Bin Mohiuddin" }],
   openGraph: {
-    title: "Tanjil Bin Mohiuddin | Associate Backend Developer",
+    title: "Tanjil Bin Mohiuddin",
     description:
-      "Portfolio of Tanjil Bin Mohiuddin - Associate Backend Developer at Akij iBOS Limited",
+      "Associate Backend Developer at Akij iBOS Limited · Research in computer vision, MLLMs and VLMs",
     type: "website",
   },
 };
@@ -44,10 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} scroll-smooth`}
-    >
+    <html lang="en" className={`${inter.variable} ${sourceSerif.variable}`}>
       <body className="font-sans">
         <ClientLayout>{children}</ClientLayout>
       </body>

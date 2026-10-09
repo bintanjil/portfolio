@@ -1,91 +1,26 @@
-import SectionTitle from "@/component/ui/SectionTitle";
-import Reveal from "@/component/common/Reveal";
-import { Card, CardContent } from "@/component/ui/card";
+import Section from "@/component/ui/Section";
+import MailOptions from "@/component/common/MailOptions";
 import { personalInfo } from "@/data/personal";
-import { Mail, MapPin, Phone } from "lucide-react";
-import SocialLinks from "@/component/common/SocialLinks";
-import ContactForm from "@/component/form/ContactForm";
-import CopyEmailButton from "@/component/common/CopyEmailButton";
-
-const details = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: personalInfo.email,
-    href: `mailto:${personalInfo.email}`,
-  },
-  {
-    icon: Phone,
-    label: "Phone",
-    value: personalInfo.phone,
-    href: `tel:${personalInfo.phone}`,
-  },
-  {
-    icon: MapPin,
-    label: "Location",
-    value: personalInfo.location,
-  },
-];
 
 export default function Contact() {
   return (
-    <section id="contact" className="section-padding bg-green-50/40">
-      <div className="section-container">
-        <SectionTitle
-          eyebrow="Contact"
-          title="Get In Touch"
-          subtitle="Feel free to reach out for opportunities, collaborations, or just to say hi."
-          centered
-        />
-
-        <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-2">
-          <Reveal>
-            <div className="space-y-6">
-              <div className="grid gap-4">
-                {details.map(({ icon: Icon, label, value, href }) => {
-                  const content = (
-                    <CardContent className="flex items-center gap-4 pt-6">
-                      <div className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg bg-green-50 text-green-800 ring-1 ring-inset ring-green-100">
-                        <Icon className="h-5 w-5" />
-                      </div>
-                      <div>
-                        <p className="text-sm font-medium text-neutral-900">
-                          {label}
-                        </p>
-                        <p className="text-sm text-neutral-600">{value}</p>
-                      </div>
-                    </CardContent>
-                  );
-
-                  return href ? (
-                    <a key={label} href={href}>
-                      <Card className="transition-shadow hover:shadow-md">
-                        {content}
-                      </Card>
-                    </a>
-                  ) : (
-                    <Card key={label}>{content}</Card>
-                  );
-                })}
-              </div>
-
-              <div className="space-y-4">
-                <CopyEmailButton email={personalInfo.email} />
-                <div>
-                  <p className="mb-3 text-sm text-neutral-600">
-                    Connect with me on social media
-                  </p>
-                  <SocialLinks />
-                </div>
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal delay={120}>
-            <ContactForm />
-          </Reveal>
-        </div>
-      </div>
-    </section>
+    <Section id="contact" title="Contact">
+      <p className="text-[15px] leading-7 text-ink/90">
+        I&apos;m happy to hear about research collaborations, PhD positions and
+        backend engineering roles. Email is the best way to reach me:
+      </p>
+      <p className="my-4 font-serif text-xl">
+        <a href={`mailto:${personalInfo.email}`} className="link">
+          {personalInfo.email}
+        </a>
+      </p>
+      <MailOptions email={personalInfo.email} />
+      <p className="mt-4 text-[15px] text-muted">
+        Phone / WhatsApp:{" "}
+        <a href={`tel:${personalInfo.phone}`} className="link">
+          {personalInfo.phone}
+        </a>
+      </p>
+    </Section>
   );
 }

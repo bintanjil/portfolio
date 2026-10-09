@@ -2,6 +2,7 @@ export const personalInfo = {
   name: "Tanjil Bin Mohiuddin",
   title: "Associate Backend Developer",
   email: "tanjilm445@gmail.com",
+  resume: "/resume/Tanjil_Cv.pdf",
   bio: "Associate Backend Developer at Akij iBOS Limited with a B.Sc. in Computer Science from AIUB. I build and optimize enterprise ERP systems, and I enjoy solving algorithmic problems across competitive programming platforms.",
   roles: [
     "Associate Backend Developer",
@@ -11,7 +12,7 @@ export const personalInfo = {
   ],
   seeking: "Seeking Research & PhD Opportunities",
   research:
-    "I am actively seeking research and PhD opportunities, with interests spanning distributed systems, databases, and applied machine learning. I enjoy turning real-world engineering problems into research questions.",
+    "I am looking for research and PhD opportunities in computer vision and machine learning, especially multimodal large language models (MLLMs) and vision-language models (VLMs).",
   github: "https://github.com/bintanjil",
   linkedin: "https://www.linkedin.com/in/tanjil-bin-mohiuddin-103a34246/",
   codeforces: "https://codeforces.com/profile/tanjill",
