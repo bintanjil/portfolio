@@ -1,25 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-source-serif), ui-serif, Georgia, "Times New Roman", serif;
-
-  --color-paper: #fbfaf7;
-  --color-surface: #ffffff;
-  --color-ink: #1a1a1a;
-  --color-muted: #5c5a56;
-  --color-faint: #8b8780;
-  --color-rule: #e7e3db;
-  --color-accent: #1f4e8c;
-  --color-accent-hover: #163a6a;
-  --color-accent-soft: #e9eef6;
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
 }
-
 
 *,
 ::before,
 ::after {
-  border-color: var(--color-rule);
+  border-color: #e5e5e5;
 }
 
 html {
@@ -27,34 +16,81 @@ html {
 }
 
 body {
-  background-color: var(--color-paper);
-  color: var(--color-ink);
+  background-color: #ffffff;
+  color: #0a0a0a;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
 section[id] {
-  scroll-margin-top: 2rem;
+  scroll-margin-top: 5rem;
 }
 
-/* Inline text links: underlined on hover */
-.link {
-  color: var(--color-accent);
+.container-page {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 72rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .container-page {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Faint dotted backdrop */
+.dot-grid {
+  background-image: radial-gradient(#d4d4d4 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+/* Underlined inline links */
+.link-u {
   text-decoration-line: underline;
-  text-decoration-color: transparent;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
-  transition: text-decoration-color 150ms, color 150ms;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+  text-decoration-color: currentColor;
+  transition: opacity 150ms;
 }
 
-.link:hover {
-  color: var(--color-accent-hover);
-  text-decoration-color: currentColor;
+.link-u:hover {
+  opacity: 0.7;
+}
+
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--color-accent) 22%, transparent);
+  background: #0a0a0a;
+  color: #ffffff;
 }
 
 a,
@@ -62,8 +98,3 @@ button {
   -webkit-tap-highlight-color: transparent;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-}

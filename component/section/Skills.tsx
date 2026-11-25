@@ -1,17 +1,37 @@
 import Section from "@/component/ui/Section";
+import Reveal from "@/component/common/Reveal";
 import { skills } from "@/data/skills";
 
 export default function Skills() {
   return (
-    <Section id="skills" title="Skills">
-      <dl className="grid gap-x-6 gap-y-2 text-[15px] leading-relaxed sm:grid-cols-[10rem_1fr]">
-        {skills.map((group) => (
-          <div key={group.category} className="contents">
-            <dt className="font-medium text-ink">{group.category}</dt>
-            <dd className="mb-2 text-ink/80 sm:mb-0">{group.items.join(", ")}</dd>
-          </div>
-        ))}
-      </dl>
+    <Section id="skills" number="06" eyebrow="Technical Skills" title="Toolkit">
+      <Reveal>
+        <ul className="border-t border-neutral-200">
+          {skills.map((group, i) => (
+            <li
+              key={group.category}
+              className="flex flex-col gap-3 border-b border-neutral-200 py-4 sm:flex-row sm:items-center sm:gap-6"
+            >
+              <span className="flex w-56 shrink-0 items-center gap-4">
+                <span className="font-mono text-[11px] text-neutral-400">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="text-[15px] font-medium text-neutral-950">{group.category}</span>
+              </span>
+              <span className="flex flex-wrap gap-1.5">
+                {group.items.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-neutral-200 px-3 py-0.5 font-mono text-[11px] text-neutral-600"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </Reveal>
     </Section>
   );
 }

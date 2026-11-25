@@ -1,7 +1,7 @@
 export const skills = [
   {
     category: "Languages",
-    items: ["C++", "C#", "JavaScript", "SQL"],
+    items: ["Python", "C++", "C#", "JavaScript", "SQL"],
   },
   {
     category: "Backend",
@@ -12,8 +12,12 @@ export const skills = [
     items: ["Next.js", "React", "HTML", "CSS"],
   },
   {
+    category: "ML & Data",
+    items: ["PyTorch", "NumPy", "pandas", "Query Optimization", "Stored Procedures", "Indexing"],
+  },
+  {
     category: "Databases",
-    items: ["PostgreSQL", "MySQL"],
+    items: ["SQL Server", "PostgreSQL", "MySQL"],
   },
   {
     category: "Tools & Technologies",

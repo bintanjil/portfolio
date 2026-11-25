@@ -49,3 +49,15 @@ export const awards = [
       "Recognized for outstanding contribution and consistent performance.",
   },
 ];
+
+export const leadership = [
+  {
+    organization: "IEEE AIUB Student Branch",
+    roles: [
+      "Event Coordinator, 2023 Executive Committee",
+      "Chairperson, Industry Applications Society Committee",
+    ],
+    detail:
+      "Led the event team that organized and launched SPAVED 6.0 and 7.0. During my time in the branch, it received the IEEE Region 10 Exemplary Student Branch Award 2022.",
+  },
+];
